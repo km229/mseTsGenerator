@@ -1,0 +1,27 @@
+{
+  "name": "tsparser_mgl843",
+  "version": "1.0.0",
+  "description": "Project for course MGL843",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/km229/tsParser_mgl843.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/km229/tsParser_mgl843/issues"
+  },
+  "homepage": "https://github.com/km229/tsParser_mgl843#readme",
+  "dependencies": {
+    "nearley": "^2.20.1",
+    "pegjs": "^0.10.0",
+    "ts-morph": "^9.1.0",
+    "ts-node": "^9.1.1"
+  },
+  "devDependencies": {}
+}
