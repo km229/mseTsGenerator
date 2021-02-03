@@ -1,14 +1,15 @@
 
-import {ClassDeclaration, MSEDocument, Node} from './Node'
+import * as src from "./index"
+import {ClassDeclaration} from "ts-morph";
 
-export class ClassNode implements Node {
+export class ClassNode extends src.Node {
 
-    constructor(node: ClassDeclaration, _context: MSEDocument) {
-
+    constructor(node: ClassDeclaration, ctx: src.MSEDocument) {
+        super(node, ctx)
     }
 
-
-    _node: ClassDeclaration
+    explore(): void {
+    }
 
     toMSE(): string {
         return "";

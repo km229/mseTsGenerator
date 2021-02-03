@@ -1,28 +1,32 @@
 import { Project } from "ts-morph"
 import * as c from '../constants'
-import {File} from './File'
+import {FileNode} from './nodes'
 
 export class MSEDocument {
-    private readonly _const: any;
-    private _project: Project;
-    private _projectPath: string;
-    private _id: number;
+    private _project: Project
+    private _fileList: FileNode[]
+    private _idCounter: number
 
-    constructor(projectPath: string, documentType: c.MSE_FORMAT = c.MSE_FORMAT.MSE) {
-        this._id=1;
-        this._project=new Project();
-        this._project.addSourceFilesAtPaths(projectPath+"/**/*{.d.ts,.ts}");
-        documentType === c.MSE_FORMAT.MSE ? this._const=c.mse_const : this._const=c.json_const;
+    constructor(projectPath: string) {
+        this._project=new Project()
+        this._project.addSourceFilesAtPaths(projectPath+"/**/*{.d.ts,.ts}")
+        this._fileList = []
+        this._idCounter=1
     }
 
-    private explore(): void {
-        let res
+    public explore(): void {
+        let file
         this._project.getSourceFiles().forEach(sourceFile => {
-            let s = new File(sourceFile, this);
-            res += s.toMSE();
+            file = new FileNode(sourceFile, this)
+            this._fileList.push(file)
+            file.explore()
         })
-        return res;
     }
+
+    /* TODO - A revoir
+    public findById(id: number): Node {
+    }
+    */
 
     public generateFile(path: string): void {
         const sF = this._project.createSourceFile(path, this.toMSE(), {overwrite: true})
@@ -30,23 +34,32 @@ export class MSEDocument {
     }
 
     public toMSE(): string {
-        let result = this._const.open_token+"\n"
-        result += this.explore();
-        result += this._const.close_token;
+        let result = c.OPEN_TOKEN+"\n"
+        this._fileList.forEach(file => {
+            result += file.toMSE()
+        })
+        result += "\n"+c.CLOSE_TOKEN
         return result;
     }
 
-    get const(): any {
-        return this._const;
+    public showTree(): void {
+        this._fileList.forEach(file => {
+            console.log(file.showTree());
+        })
     }
 
-    public getNextId(){
-        let id = this._id
-        this._id++;
-        return id;
+    get getNextId(): number {
+        let id = this._idCounter
+        this._idCounter++
+        return id
     }
 
-    get projectPath(): string {
-        return this._projectPath;
+    get project(): Project {
+        return this._project
     }
+
+    get fileList(): FileNode[] {
+        return this._fileList
+    }
+
 }
