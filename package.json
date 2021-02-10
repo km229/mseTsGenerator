@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/km229/tsToMSE_mgl843#readme",
   "dependencies": {
+    "famix": "github:pascalerni/famix#6569f5e",
     "nearley": "^2.20.1",
     "pegjs": "^0.10.0",
     "ts-morph": "^9.1.0",

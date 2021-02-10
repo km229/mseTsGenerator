@@ -1,49 +1,46 @@
-
 import {MSEDocument} from "../MSEDocument"
 import * as ts from "ts-morph"
-import {def} from "./index"
+import {Element} from '../model/Element'
 
 export {MSEDocument} from "../MSEDocument"
 export * as def from '../../constants'
 
-export abstract class Node {
+export abstract class Node<NodeType extends ts.Node> {
 
     _ctx: MSEDocument
     // Noeud courant
-    _node: ts.Node
-    // Liste des noeuds descendants
-    _nodeList: Node[]
-    //TODO - A rediscuter pour voir si on fait sous cette forme
-    // Liste des éléments à ajouter au fichier MSE
-    // [0: id, 1: type, 2: text]
-    // ex: [0: 1, 1: "IndexedFileAnchor", 2: "(element (ref: 28))\n\t(endPos 46)\n\t(fileName './Car.java')\n\t(startPos 41)"]
-    _mseList: string[][]
+    _node: NodeType
+    _nodeList: Node<any>[]
+    _element: Element
+    _elementList: Element[]
 
-    protected constructor(node: ts.Node, ctx: MSEDocument) {
+    protected constructor(ctx: MSEDocument, node: NodeType, element?: Element) {
         this._node=node
         this._ctx=ctx
+        this._element=element
         this._nodeList=[]
+        this._elementList=[]
         this.explore()
     }
 
-    //TODO - A revoir
     toMSE(): string {
-        let result = def.OPEN_TOKEN
-        this._mseList.forEach(node => {
-            result += def.FAMIX_PREFIX+`.${node[1]} (id: ${node[0]})\n\t`+node[2]
+        let mse = ""
+        this._nodeList.forEach(node => {
+            mse += node.toMSE()
         })
-        result += def.CLOSE_TOKEN;
-        return result;
+        this._elementList.forEach(element => {
+            mse += element.toMSE()
+        })
+        return mse += this._element.toMSE()
     }
 
-    abstract explore(): void
 
-    showTree(lvl?: string): string {
-        let tree_lvl = lvl ? lvl : ""
-        let tree = tree_lvl+ts.SyntaxKind[this._node.getKind()]+"\n"
-        tree_lvl+="-"
-        this._nodeList.forEach(node => {
-            tree += node.showTree(tree_lvl)
+    abstract explore() : void;
+
+    showTree(node: ts.Node = this._node, lvl: string = ""): string {
+        let tree = `${lvl} ${node.getKindName()}\n`
+        node.getChildren().forEach(child => {
+            tree += this.showTree(child, lvl+"-")
         })
         return tree
     }
