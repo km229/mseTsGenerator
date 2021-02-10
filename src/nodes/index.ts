@@ -1,10 +1,8 @@
 
-//Interface
-export {Node, MSEDocument, def} from './Node'
+//Abstract node
+export {FameNode} from './FameNode'
 
 //Implementation
-export * from './Identifier'
 export * from './FileNode'
 export * from './ClassNode'
-export * from './PropertyNode'
 export * from './ImportNode'

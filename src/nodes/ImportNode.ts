@@ -1,14 +1,12 @@
 
-import * as src from "./index"
 import {ImportDeclaration} from "ts-morph"
+import {MSEDocument} from "../MSEDocument"
+import {FameNode} from "./index"
 
-export class ImportNode extends src.Node {
+export class ImportNode extends FameNode<ImportDeclaration> {
 
-    _ctx: src.MSEDocument;
-    _node: ImportDeclaration
-
-    constructor(node: ImportDeclaration, ctx: src.MSEDocument) {
-        super(node, ctx)
+    constructor(ctx: MSEDocument, node: ImportDeclaration) {
+        super(ctx, node)
     }
 
     toMSE(): string {
