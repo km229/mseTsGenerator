@@ -1,70 +1,37 @@
 
-import {ClassDeclaration, ModifierableNode, Node} from "ts-morph"
-import {Element} from "../model/Element"
-import {MSEDocument} from "../MSEDocument"
-import {FameNode} from "./index"
+import * as src from "./index"
+import {ClassDeclaration} from "ts-morph";
+import {Element} from "../model/Element";
+import {MSEDocument} from "./index";
 
-export class ClassNode extends FameNode<ClassDeclaration> {
+export class ClassNode extends src.Node<ClassDeclaration> {
 
     constructor(node: ClassDeclaration, ctx: MSEDocument) {
         super(ctx, node, new Element(ctx.getNextId, "Class", [
-            ['name', `'${node.getName()}'`],
+            ['name', node.getName()]
         ]))
-    }
-
-    getNewIndexedFileAnchor(ref: number, node: Node): Element {
-        return new Element(this._ctx.getNextId, "IndexedFileAnchor", [
-            ["element", `(ref: ${ref})`],
-            ["startPos", String(node.getPos())],
-            ["endPos", String(node.getEnd())],
-            ["fileName", `'${node.getSourceFile().getFilePath()}'`],
-        ])
-    };
-
-    getModifiers(node: ModifierableNode): string {
-        let modifiers
-        if(node.getModifiers().length > 0){
-            modifiers=""
-            node.getModifiers().forEach(modifier => {
-                modifiers += `'${modifier.getText()}' `
-            })
-            modifiers=modifiers.slice(0, -1)
-        }
-        return modifiers
     }
 
     explore(): void {
 
         //Add fileAnchor for this class
-        let fileAnchor = this.getNewIndexedFileAnchor(this._element.id, this._node)
+        let fileAnchor = new Element(this._ctx.getNextId, "IndexedFileAnchor", [
+            ["element", `(ref: ${this._element.id})`],
+            ["startPos", String(this._node.getPos())],
+            ["endPos", String(this._node.getEnd())],
+            ["fileName", `'${this._node.getSourceFile().getFilePath()}`],
+        ])
         this._element.addAttribute("sourceAnchor", `(ref: ${fileAnchor.id})`)
         this._elementList.push(fileAnchor)
 
         // Add modifiers
-        this.getModifiers(this._node)!=undefined ? this._element.addAttribute('modifiers', this.getModifiers(this._node)) : null
-
-        //Add attributes
-        this._node.getProperties().forEach(prop => {
-
-            let attrElement = new Element(this._ctx.getNextId, "Attribute", [
-                ["name", `'${prop.getFirstChild().getText()}'`],
-                //TODO - Recover declaredTypes
-                //["declaredType", `'${prop.getType().getText()}'`],
-                ["parentType", `(ref: ${this._element.id})`],
-            ])
-            this.getModifiers(prop)!=undefined ? attrElement.addAttribute('modifiers', this.getModifiers(prop)) : null
-            let propertyAnchor = this.getNewIndexedFileAnchor(attrElement.id, prop.getFirstChild())
-            attrElement.addAttribute("sourceAnchor", `(ref: ${propertyAnchor.id})`)
-
-            this._elementList.push(propertyAnchor)
-            this._elementList.push(attrElement)
-
-        })
-
-        //Add methods
-
-        //Add inheritance
-
+        if(this._node.getModifiers().length > 0){
+            let modifiers = ""
+            this._node.getModifiers().forEach(modifier => {
+                modifiers += `'${modifier.getText()}'`
+            })
+            this._element.addAttribute('modifiers', modifiers)
+        }
         // let extend= this._node.getExtends();
         // let implement = this._node.getImplements()
         // console.log(extend)
@@ -73,23 +40,23 @@ export class ClassNode extends FameNode<ClassDeclaration> {
         // this._node.getInstanceMembers().forEach(attribut => {
         //     console.log(attribut)
         // })
-        // this._node.forEachChild(child => {
-        //     let currentNode
-        //     switch (child.getKind()){
-        //         case ts.SyntaxKind.HeritageClause:
-        //             currentNode = new src.ClassNode(child as ClassDeclaration, this._ctx)
-        //             this._nodeList.push(currentNode)
-        //             break;
-        //         case ts.SyntaxKind.PublicKeyword:
-        //             currentNode = new src.ClassNode(child as ClassDeclaration, this._ctx)
-        //             this._nodeList.push(currentNode)
-        //             break;
-        //     }
-        //     if(currentNode != undefined){
-        //         currentNode.explore()
-        //     }
-        //     currentNode=undefined
-        // })
+        this._node.forEachChild(child => {
+            let currentNode
+            switch (child.getKind()){
+                // case ts.SyntaxKind.HeritageClause:
+                //     currentNode = new src.ClassNode(child as ClassDeclaration, this._ctx)
+                //     this._nodeList.push(currentNode)
+                //     break;
+                // case ts.SyntaxKind.PublicKeyword:
+                //     currentNode = new src.ClassNode(child as ClassDeclaration, this._ctx)
+                //     this._nodeList.push(currentNode)
+                //     break;
+            }
+            if(currentNode != undefined){
+                currentNode.explore()
+            }
+            currentNode=undefined
+        })
     }
 
 }

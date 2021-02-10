@@ -1,14 +1,13 @@
 
-import {ClassDeclaration, SourceFile, SyntaxKind} from "ts-morph"
-import {Element} from "../model/Element"
-import {MSEDocument} from "../MSEDocument"
 import * as src from "./index"
+import {ClassDeclaration, SourceFile, ts} from "ts-morph"
+import {Element} from "../model/Element";
 
-export class FileNode extends src.FameNode<SourceFile> {
+export class FileNode extends src.Node<SourceFile> {
 
-    constructor(ctx: MSEDocument, node: SourceFile) {
+    constructor(ctx: src.MSEDocument, node: SourceFile) {
         super(ctx, node, new Element(ctx.getNextId, "FileAnchor", [
-            ["fileName", `'${node.getFilePath()}'`],
+            ["fileName", node.getFilePath()],
             ["startLine", String(node.getStartLineNumber())],
             ["endLine", String(node.getEndLineNumber())],
         ]))
@@ -17,16 +16,16 @@ export class FileNode extends src.FameNode<SourceFile> {
     explore(): void {
         this._node.forEachChild(node => {
             switch (node.getKind()){
-                case SyntaxKind.ClassDeclaration:
+                case ts.SyntaxKind.ClassDeclaration:
                     this._nodeList.push(new src.ClassNode(node as ClassDeclaration, this._ctx))
                     break;
-                case SyntaxKind.InterfaceDeclaration:
+                case ts.SyntaxKind.InterfaceDeclaration:
                     break;
-                case SyntaxKind.ModuleDeclaration:
+                case ts.SyntaxKind.ModuleDeclaration:
                     break;
-                case SyntaxKind.ImportDeclaration:
+                case ts.SyntaxKind.ImportDeclaration:
                     break;
-                case SyntaxKind.VariableStatement:
+                case ts.SyntaxKind.VariableStatement:
                     break;
             }
         })
