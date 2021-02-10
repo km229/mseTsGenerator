@@ -29,7 +29,7 @@ export class Element {
     toMSE(): string {
         let result = `\t${def.OPEN_TOKEN+def.FAMIX_PREFIX}.${this._type} (id: ${this._id})\n`
         this._attrList.forEach(a => {
-            result += `\t\t(${a[0]} ${a[1].toString()})\n`
+            result += `\t\t\t(${a[0]} ${a[1].toString()})\n`
         })
         return result += `\t${def.CLOSE_TOKEN}`
     }

@@ -1,5 +1,5 @@
 
-export class test {
+export abstract class test {
     run: boolean
     constructor() {
         this.run=false
