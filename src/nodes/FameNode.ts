@@ -1,16 +1,13 @@
 import {MSEDocument} from "../MSEDocument"
-import * as ts from "ts-morph"
+import {Node} from "ts-morph"
 import {Element} from '../model/Element'
 
-export {MSEDocument} from "../MSEDocument"
-export * as def from '../../constants'
-
-export abstract class Node<NodeType extends ts.Node> {
+export abstract class FameNode<NodeType extends Node> {
 
     _ctx: MSEDocument
     // Noeud courant
     _node: NodeType
-    _nodeList: Node<any>[]
+    _nodeList: FameNode<any>[]
     _element: Element
     _elementList: Element[]
 
@@ -37,7 +34,7 @@ export abstract class Node<NodeType extends ts.Node> {
 
     abstract explore() : void;
 
-    showTree(node: ts.Node = this._node, lvl: string = ""): string {
+    showTree(node: Node = this._node, lvl: string = ""): string {
         let tree = `${lvl} ${node.getKindName()}\n`
         node.getChildren().forEach(child => {
             tree += this.showTree(child, lvl+"-")
