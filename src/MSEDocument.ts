@@ -3,30 +3,31 @@ import * as c from '../constants'
 import {FileNode} from './nodes'
 
 export class MSEDocument {
+
     private _project: Project
+    private _projectPath: string
     private _fileList: FileNode[]
     private _idCounter: number
 
     constructor(projectPath: string) {
         this._project=new Project()
-        this._project.addSourceFilesAtPaths(projectPath+"/**/*{.d.ts,.ts}")
+        this._projectPath=projectPath
+        this._project.addSourceFilesAtPaths(this._projectPath+"/**/*{.d.ts,.ts}")
         this._fileList = []
         this._idCounter=1
     }
 
     public explore(): void {
-        let file
         this._project.getSourceFiles().forEach(sourceFile => {
-            file = new FileNode(sourceFile, this)
-            this._fileList.push(file)
-            file.explore()
+            this._fileList.push(new FileNode(this, sourceFile))
         })
     }
 
-    /* TODO - A revoir
-    public findById(id: number): Node {
+    //TODO?
+    /*public findByName(name: string): any {
     }
-    */
+    public findById(id: number): any {
+    }*/
 
     public generateFile(path: string): void {
         const sF = this._project.createSourceFile(path, this.toMSE(), {overwrite: true})

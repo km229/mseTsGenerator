@@ -1,25 +1,36 @@
 
+import {ClassDeclaration, SourceFile, SyntaxKind} from "ts-morph"
+import {Element} from "../model/Element"
+import {MSEDocument} from "../MSEDocument"
 import * as src from "./index"
-import {SourceFile} from "ts-morph"
 
-export class FileNode extends src.Node {
+export class FileNode extends src.FameNode<SourceFile> {
 
-    constructor(node: SourceFile, ctx: src.MSEDocument) {
-        super(node, ctx)
-    }
-
-    public checkNodes(){
-
-    }
-
-    public toMSE(): string {
-        let result = src.def.OPEN_TOKEN+"\n"
-        result += src.def.CLOSE_TOKEN;
-        return result;
+    constructor(ctx: MSEDocument, node: SourceFile) {
+        super(ctx, node, new Element(ctx.getNextId, "FileAnchor", [
+            ["fileName", `'${node.getFilePath()}'`],
+            ["startLine", String(node.getStartLineNumber())],
+            ["endLine", String(node.getEndLineNumber())],
+        ]))
     }
 
     explore(): void {
+        this._node.forEachChild(node => {
+            switch (node.getKind()){
+                case SyntaxKind.ClassDeclaration:
+                    this._nodeList.push(new src.ClassNode(node as ClassDeclaration, this._ctx))
+                    break;
+                case SyntaxKind.InterfaceDeclaration:
+                    break;
+                case SyntaxKind.ModuleDeclaration:
+                    break;
+                case SyntaxKind.ImportDeclaration:
+                    break;
+                case SyntaxKind.VariableStatement:
+                    break;
+            }
+        })
     }
 
-
 }
+

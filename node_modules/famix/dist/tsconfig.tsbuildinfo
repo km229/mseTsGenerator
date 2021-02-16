@@ -1,0 +1,1310 @@
+{
+  "program": {
+    "fileInfos": {
+      "../node_modules/typescript/lib/lib.es5.d.ts": {
+        "version": "ff5688d6b2fcfef06842a395d7ff4d5730d45b724d4c48913118c889829052a1",
+        "signature": "ff5688d6b2fcfef06842a395d7ff4d5730d45b724d4c48913118c889829052a1"
+      },
+      "../node_modules/typescript/lib/lib.es2015.d.ts": {
+        "version": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96",
+        "signature": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96"
+      },
+      "../node_modules/typescript/lib/lib.es2016.d.ts": {
+        "version": "5f217838d25704474d9ef93774f04164889169ca31475fe423a9de6758f058d1",
+        "signature": "5f217838d25704474d9ef93774f04164889169ca31475fe423a9de6758f058d1"
+      },
+      "../node_modules/typescript/lib/lib.es2017.d.ts": {
+        "version": "459097c7bdd88fc5731367e56591e4f465f2c9de81a35427a7bd473165c34743",
+        "signature": "459097c7bdd88fc5731367e56591e4f465f2c9de81a35427a7bd473165c34743"
+      },
+      "../node_modules/typescript/lib/lib.dom.d.ts": {
+        "version": "2d53f3741e5a4f78a90f623387d71a1cc809bb258f10cdaec034b67cbf71022f",
+        "signature": "2d53f3741e5a4f78a90f623387d71a1cc809bb258f10cdaec034b67cbf71022f"
+      },
+      "../node_modules/typescript/lib/lib.dom.iterable.d.ts": {
+        "version": "f42b5c6ad71e2229f1fea2065bc28b887344bc7e7acd9d87e2e53d6376736890",
+        "signature": "f42b5c6ad71e2229f1fea2065bc28b887344bc7e7acd9d87e2e53d6376736890"
+      },
+      "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts": {
+        "version": "fe4e59403e34c7ff747abe4ff6abbc7718229556d7c1a5b93473fb53156c913b",
+        "signature": "fe4e59403e34c7ff747abe4ff6abbc7718229556d7c1a5b93473fb53156c913b"
+      },
+      "../node_modules/typescript/lib/lib.scripthost.d.ts": {
+        "version": "b9faa17292f17d2ad75e34fac77dd63a6403af1dba02d39cd0cbb9ffdf3de8b9",
+        "signature": "b9faa17292f17d2ad75e34fac77dd63a6403af1dba02d39cd0cbb9ffdf3de8b9"
+      },
+      "../node_modules/typescript/lib/lib.es2015.core.d.ts": {
+        "version": "4ab19088d508f9e62bfc61c157e8a65b2afaefa251ecca315e7d20b5b97b256f",
+        "signature": "4ab19088d508f9e62bfc61c157e8a65b2afaefa251ecca315e7d20b5b97b256f"
+      },
+      "../node_modules/typescript/lib/lib.es2015.collection.d.ts": {
+        "version": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0",
+        "signature": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0"
+      },
+      "../node_modules/typescript/lib/lib.es2015.generator.d.ts": {
+        "version": "765e0e9c9d74cf4d031ca8b0bdb269a853e7d81eda6354c8510218d03db12122",
+        "signature": "765e0e9c9d74cf4d031ca8b0bdb269a853e7d81eda6354c8510218d03db12122"
+      },
+      "../node_modules/typescript/lib/lib.es2015.iterable.d.ts": {
+        "version": "285958e7699f1babd76d595830207f18d719662a0c30fac7baca7df7162a9210",
+        "signature": "285958e7699f1babd76d595830207f18d719662a0c30fac7baca7df7162a9210"
+      },
+      "../node_modules/typescript/lib/lib.es2015.promise.d.ts": {
+        "version": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2",
+        "signature": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2"
+      },
+      "../node_modules/typescript/lib/lib.es2015.proxy.d.ts": {
+        "version": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe",
+        "signature": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe"
+      },
+      "../node_modules/typescript/lib/lib.es2015.reflect.d.ts": {
+        "version": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976",
+        "signature": "f5b242136ae9bfb1cc99a5971cccc44e99947ae6b5ef6fd8aa54b5ade553b976"
+      },
+      "../node_modules/typescript/lib/lib.es2015.symbol.d.ts": {
+        "version": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230",
+        "signature": "9ae2860252d6b5f16e2026d8a2c2069db7b2a3295e98b6031d01337b96437230"
+      },
+      "../node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts": {
+        "version": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303",
+        "signature": "3e0a459888f32b42138d5a39f706ff2d55d500ab1031e0988b5568b0f67c2303"
+      },
+      "../node_modules/typescript/lib/lib.es2016.array.include.d.ts": {
+        "version": "3f96f1e570aedbd97bf818c246727151e873125d0512e4ae904330286c721bc0",
+        "signature": "3f96f1e570aedbd97bf818c246727151e873125d0512e4ae904330286c721bc0"
+      },
+      "../node_modules/typescript/lib/lib.es2017.object.d.ts": {
+        "version": "ff8ad203e83338289b0f5defc1a5b5c253fb7d251b464db497383f915a0df3f4",
+        "signature": "ff8ad203e83338289b0f5defc1a5b5c253fb7d251b464db497383f915a0df3f4"
+      },
+      "../node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": {
+        "version": "b8667586a618c5cf64523d4e500ae39e781428abfb28f3de441fc66b56144b6f",
+        "signature": "b8667586a618c5cf64523d4e500ae39e781428abfb28f3de441fc66b56144b6f"
+      },
+      "../node_modules/typescript/lib/lib.es2017.string.d.ts": {
+        "version": "21df2e0059f14dcb4c3a0e125859f6b6ff01332ee24b0065a741d121250bc71c",
+        "signature": "21df2e0059f14dcb4c3a0e125859f6b6ff01332ee24b0065a741d121250bc71c"
+      },
+      "../node_modules/typescript/lib/lib.es2017.intl.d.ts": {
+        "version": "c1759cb171c7619af0d2234f2f8fb2a871ee88e956e2ed91bb61778e41f272c6",
+        "signature": "c1759cb171c7619af0d2234f2f8fb2a871ee88e956e2ed91bb61778e41f272c6"
+      },
+      "../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts": {
+        "version": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46",
+        "signature": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46"
+      },
+      "../node_modules/typescript/lib/lib.es2017.full.d.ts": {
+        "version": "873c09f1c309389742d98b7b67419a8e0a5fa6f10ce59fd5149ecd31a2818594",
+        "signature": "873c09f1c309389742d98b7b67419a8e0a5fa6f10ce59fd5149ecd31a2818594"
+      },
+      "../src/famix_mse_exporter.ts": {
+        "version": "07a7d1cc6235b01eaf42d88951c45b1e6815481c5802dac9450a287d837385b8",
+        "signature": "8578fa7a908940fffdce3432d74c78f1c8d12aae4a0036e6a356b6b4f5ea1b6a"
+      },
+      "../src/model/famix/entity.ts": {
+        "version": "4a9dc9701ded03046bea5497e3f0864906ed9b43f70f3f7b55241c7550e679c0",
+        "signature": "a9b273875ae2d3174383f4262d47c1d4629d09550c85e48b194d6dd4e24fa914"
+      },
+      "../src/model/famix/source_language.ts": {
+        "version": "82f755e703ead78cf332a14020ee47c50beeece55019b3cd592dcefb1b0926d5",
+        "signature": "54473b34df253f2acca01d49c6bc7de15e5c42cd856ea87fc433180060cdc101"
+      },
+      "../src/model/famix/comment.ts": {
+        "version": "6583a42cad2a7529ca18d1829274969e79fd702ba648db3baa478510fc07903c",
+        "signature": "9701b634d77df2eb3da18ef772f84dd832a3ed2874b15262203bca14fa62fa08"
+      },
+      "../src/model/famix/source_anchor.ts": {
+        "version": "cee0f6abb89bcd5308535034c0a03190b8680b2c720feb8fbaed9f008e40347a",
+        "signature": "36305698d32e2d11d01cf1090c2090946e46224ca7dd17509a68a3e23c021c06"
+      },
+      "../src/model/famix/sourced_entity.ts": {
+        "version": "e64169d56e142d81a23bb2edfcc8758752147c5399080c649e462351de074436",
+        "signature": "030884e1da9bb39a925cefebddb5e54acb14f8127ab0e34c9b5b7f7db743f2bd"
+      },
+      "../src/model/famix/package.ts": {
+        "version": "4cfa3fb6bd3eb7035e4f0fcbec393f16dc6e6ce906e8b0e4988a7efe25ac4868",
+        "signature": "dc790d4b0fbfc5646b30ca48230f7cb305a2b591569aeee93d3fee58d9e670f6"
+      },
+      "../src/model/famix/class.ts": {
+        "version": "786beb512aee4e6b20361b2ac96e4dc4141589a43cf9b9bfdb726906527f961e",
+        "signature": "42b5988ea802c16515f6b40a7525ef85d74d2cbc466f50106b886168e54be975"
+      },
+      "../src/model/famix/parameterizable_class.ts": {
+        "version": "11094bf7bd7de8717364782f0e6060c4210dcb819db32acac4a7e3903ab88aa4",
+        "signature": "c7278457d82299411d74bb8f0e3d70d192e508318f46a1d7c66c1b77cb0152ef"
+      },
+      "../src/model/famix/parameterized_type.ts": {
+        "version": "e273c470abb0664ebac6df1b21f0f8547574da280de55de3552d22566ab95ccb",
+        "signature": "e14a3458cd1730b7662a077961bfb233805f53e5882c8202fdfef06c59961e39"
+      },
+      "../src/model/famix/implicit_variable.ts": {
+        "version": "adfa3e1ec3aa84000f38f4a44378247404f15ea9aee87dcd7ee59b36574f2802",
+        "signature": "ef1c0f9078627d5e6af04fd2d743d16494c1af1e719d592e2bcb0ec09c7d1753"
+      },
+      "../src/model/file/abstract_file.ts": {
+        "version": "222e72aee596010d0b899d845f58746f51b27c6c1b4af74019b5c19ab26b38dc",
+        "signature": "7a93f36756ebe6a6b74ccf03281d12c85c7ce363b559dddb3d9bd7412ef0eed3"
+      },
+      "../src/model/file/file.ts": {
+        "version": "8d7e14b55374f9d73cdfe6079881683d4e5e1977cbb8abb6ada1d1a68d3d7fc8",
+        "signature": "5fe3f82f9b95aecfb69a6f5e94613aaca959050e9aa56bd03a07795f21255d48"
+      },
+      "../src/model/famix/compilation_unit.ts": {
+        "version": "3c14b7c56dd415f8cf71ff1f8a3f576c47cc87d6890cc4452532cfd514760568",
+        "signature": "62f061146691b61a6a8fcc64b4a04b829add92b488885d18ca582c2e74da3d7c"
+      },
+      "../src/model/famix/module.ts": {
+        "version": "41b23d17eb9ac69480e6dff3bb6f0276b68a1c1c959a1a22f267d12a6ecedfb7",
+        "signature": "6da14bcc7d097fba52005e3fa2c3fe40de29f9f85a7dbdf6e8f1b369454f15a8"
+      },
+      "../src/model/famix/function.ts": {
+        "version": "f5bb668603dfc417ffe208fc9f043cac1aa56191a5e7f2d7b496c531545cc5bd",
+        "signature": "7d5747555a106e3730d4ecf58e35167c739a5144f9904e267662cc87869f7e4d"
+      },
+      "../src/model/famix/container_entity.ts": {
+        "version": "6ada2b2624d5b1661bf185cf633492d31b44e21147ae35d4ee523c8cdeb96654",
+        "signature": "aa6135ffc83da31aeff63bf0cead678a929d9cbb1bf60790de7421dba264875b"
+      },
+      "../src/model/famix/association.ts": {
+        "version": "97b381eaa14a7fc7c261532883c6aad55104ebd9ea628b57e5da8bf40014395e",
+        "signature": "500842e78ef51e26129869f90cf2e943bcdb53a590212bb785740a2e0e3b1e47"
+      },
+      "../src/model/famix/reference.ts": {
+        "version": "fb0ef5645bb2305e2fd62f0fbcd54b41619bc6f17b435b88da16c6cff09ca8f3",
+        "signature": "7ff3fcb07821b5e11c566ddf41a5ad640956082ded5fff697db24b73a38c8ff0"
+      },
+      "../src/model/famix/local_variable.ts": {
+        "version": "c8695fc1bd84646693af4360a62ff8de5fa87fd9692b947d4f5b08399bb51773",
+        "signature": "91149ab51b4b8fb255488057783aac434150e1be63945c5ca1dfb04972802ead"
+      },
+      "../src/model/famix/access.ts": {
+        "version": "775806a6c8bdb28808814aed36ce8d678dce1289ce6d5e292a355bd551d860ba",
+        "signature": "baa5cd81359c4373e19d48c5c10ff9a43469cb7601e1acb613391ccb5ec1d2b7"
+      },
+      "../src/model/famix/parameter.ts": {
+        "version": "6506e755016da48ac3b8ffc60b7f5b57ce07522920930766bf25062720dac11d",
+        "signature": "ffd26fc3e1a5b44c041c31dfd5e584f6b3114120de35db1447966fd43101c50b"
+      },
+      "../src/model/famix/behavioural_entity.ts": {
+        "version": "2762aed66617e2533ea916143b760f7ed96559439ae82c66edf385aabfff94fb",
+        "signature": "bb79479ba3afaeac6e64aa6897bbfaaa5b23f3da345b13771493ce4b4ce696be"
+      },
+      "../src/model/famix/attribute.ts": {
+        "version": "a579a95e2ab33fbfc51bc332919e4cac3dfc59e8bd51abf86e4fb9b703d267b0",
+        "signature": "db9ed68d9bb727bf9ba584eccd1fa4cd35aaf6c8fb971dd44252242ab0e76d34"
+      },
+      "../src/model/famix/inheritance.ts": {
+        "version": "473d419db318ba9503166de61ad0724df3367b146a2f0ada8e4df41cb2f7f988",
+        "signature": "928a684292310dcf0432b64b9ee55b4b3c8a4c7f8903b7a5e782838a6c4e34cf"
+      },
+      "../src/model/famix/type_alias.ts": {
+        "version": "1cb83c5bce8c34b8b76d1e6a63def680e8ac12b4cd9f3c9b3581df773d8cc7f0",
+        "signature": "335437cea95b62ae8339fcd3090cc7705a449a0556ecf9bf873bc97557ff67fe"
+      },
+      "../src/model/famix/exception.ts": {
+        "version": "23f68ac067721f1327f1f714aa4e774de3b5abfeb645a540e15f42fdfdd9f50d",
+        "signature": "1c1cf5579de3b068744860ce269b558a7a97a8c4347558fda637094681145a0e"
+      },
+      "../src/model/famix/caught_exception.ts": {
+        "version": "4614bd5b7cfe092d1d5f4cfa2cd86db23f58688d229951e41ffe06d3195b13d2",
+        "signature": "7a5958d29d3ca0994aea8c80f70d14bb9b00fcd70a6ebe55ca7ac01cd3f7a271"
+      },
+      "../src/model/famix/declared_exception.ts": {
+        "version": "5f2f9b4f9965ff2da330ee8875dc722ea03c6713c5151baad0e8ff55bb085a04",
+        "signature": "2cf929bcebbac2b15716dca095758a062c914b36ba502f4992b2b634f1d6405d"
+      },
+      "../src/model/famix/thrown_exception.ts": {
+        "version": "8b63a7955d2507fda15329eda6f4c30c3ad6e927fb9723d8ad4ea955c56f32d8",
+        "signature": "07bf8822be996ce08d802b77751c49ee55244323915a5fa0643da8db52f6cad3"
+      },
+      "../src/model/famix/method.ts": {
+        "version": "81e0731d832c9bc9bb5a56dc9ebacdb6c83765bd62542e42b3dbd06b00887837",
+        "signature": "e813d89594f89237b438f4d8affa3c95b417deef53c662759ac79ce2afe0a50b"
+      },
+      "../src/model/famix/type.ts": {
+        "version": "8e5ca69465e8059af2c93ced05bec35c5a30a071afeab5cc6c758562f9fc151d",
+        "signature": "fdd76c81d2bd74d1b970b8234efab149c9f76117ee7019f6745311f7f4d32630"
+      },
+      "../src/model/famix/annotation_type.ts": {
+        "version": "ec9e1e4ac27742b7ad53278b6cbbaaab929f0516e42a477992b5d8884c61b1bc",
+        "signature": "6d64831b84ff451143fb8308546154f3e5834fb4b6acdaba446c12217efe1aab"
+      },
+      "../src/model/famix/annotation_type_attribute.ts": {
+        "version": "9687a4efe1813f5073cc6afc376e515c481e8a461da543760055d61ce49fed69",
+        "signature": "b97f5296fb85434876303e6c0826971217682429c280998fa3a06541134c5928"
+      },
+      "../src/model/famix/annotation_instance_attribute.ts": {
+        "version": "2b33c28fa5a2af0ad36327da7cd03b3a32fe22fecb9e8d37230a005700b55531",
+        "signature": "06de5dd0afe52d1a3d19fd423836e1c2a5a48c8083119472c3072a42db1eb675"
+      },
+      "../src/model/famix/annotation_instance.ts": {
+        "version": "5aacf332764e807cd3f3c7cdc074728909ddce75202198c0e2c3da8c3c502ec2",
+        "signature": "e2a8e96f566e10e96b56c596c2e65d37acfe32f0f2659e44c9c4280b0dea8c44"
+      },
+      "../src/model/famix/named_entity.ts": {
+        "version": "9897b3d37f3041a51280ca7cf98040f3631856215cc311f2dfe9e3042750e96f",
+        "signature": "25320a29832b95e14bc743c77f033189dab4c2a8fd49041b524232638b93aec6"
+      },
+      "../src/model/famix/invocation.ts": {
+        "version": "ce8ccffea7b35adb2f51cc56961315a8fb32c71ba9ceee6d283f1d801d659eef",
+        "signature": "5a5d4d6054d4ea7c99406677818925cb9154897bcb1e043e9757de6ca123ad0c"
+      },
+      "../src/model/famix/dereferenced_invocation.ts": {
+        "version": "047043ffe6fabcf69027cb42ab290f46095aa11a36bb28d181d57461460ad94e",
+        "signature": "8e748b413fb73b8194ea95226de41846f35856645e8c27a2c6e21cf5bea8f12f"
+      },
+      "../src/model/famix/leaf_entity.ts": {
+        "version": "1a6fee78a3c6d2e6612d409e6a4dbce0e3cea374d0c0fb8154533ce0aaa25a25",
+        "signature": "f8deaf3f6cc5c6f792a57fe2f89ce9ee44357510aad0077db37ef6aca5e9287e"
+      },
+      "../src/model/famix/structural_entity.ts": {
+        "version": "112294e2bd56981a91f74cbc955078fcda82a95f09e10adb48dca30de57ad00e",
+        "signature": "07c2562517ea4968dabdc7b0b39a9b6023e877a4537ad90b49cdb8dd955d337f"
+      },
+      "../src/model/famix/global_variable.ts": {
+        "version": "d4455ee366a9274dd74c40e8baeb70ffeec1ed6815cd486ecaf9ed708111885c",
+        "signature": "0857f2eaf8954cf0a8216fb38837ec22c82dcb0c47110692c50521c0ee1e0e1f"
+      },
+      "../src/model/famix/scoping_entity.ts": {
+        "version": "923858d278df8224d892c781142990c81471f58ab294c1084de89fd88f9454b3",
+        "signature": "b38fc4cb227f5da099ec125a7ee14e7e2d218bdb0c2c8062181cce3b8bd99235"
+      },
+      "../src/model/famix/namespace.ts": {
+        "version": "2b6e58d8388ccafa9d816261ed0703e7daa1b311396968cf454e758b8130ad35",
+        "signature": "6969794e9478fed8a588146623ca37a266231b975da93215eb445e3423afe991"
+      },
+      "../src/model/famix/abstract_file_anchor.ts": {
+        "version": "21a6af93c20095ccd7527886eb63e0c626cc7b393cca44b7b47f54ea2011018c",
+        "signature": "5dca98d39c712af7fa1958fef1ef47119fc29a5bf7019c76c9b017823266a463"
+      },
+      "../src/model/famix/file_anchor.ts": {
+        "version": "4a21c15ca00577a59cf783243d65838ece3685cbf835e7d723c227d7ce0339c3",
+        "signature": "093713de0abd4433d2062bd22bc2e864e4ce0bcedd05afac61d2cffaaf0b08e4"
+      },
+      "../src/model/famix/multiple_file_anchor.ts": {
+        "version": "e511ad73555ce483149b33231c419dfa0bf4d1b1074dcc122b1883abd2c39bcd",
+        "signature": "dabe08b3784f849919e3102688de595cf778ac0fb74c2831983427aa33253728"
+      },
+      "../src/model/famix/enum.ts": {
+        "version": "ba7321722c3f1e6384e335c87535d07a21c36eeedb36756aee22230fdc4df077",
+        "signature": "bc57ea755173ae5a968d1614892f255f4a7d0122baa75a0967bc27c1c98f32c4"
+      },
+      "../src/model/famix/enum_value.ts": {
+        "version": "0e11a5ec84f2f987b014f871721eed4d89f04679193c6e2fe381962de85b8295",
+        "signature": "4686c2c63235a10757692796afe973e89d48854dc6e2015a67cd4ef87869925b"
+      },
+      "../src/model/famix/parameter_type.ts": {
+        "version": "986040b9629a91b8ad7906526aa6222eb66e42ede83da964d63204878e9f487c",
+        "signature": "a2178c4cc82a0cb5744d4520004b8c0d768b738ea32d59d92990b2a06cfaff0d"
+      },
+      "../src/model/famix/pharo_anchor.ts": {
+        "version": "27822656337176d2b032bf5168c052feca64979ff655dfe2d65c66b0e7331c24",
+        "signature": "4490196842f5b2c835a2f263497f4f343c442c3065b1000cad5387105cc9f5ed"
+      },
+      "../src/model/famix/smalltalk_source_language.ts": {
+        "version": "c287dcbd3adf6b0cd348ec3b5ee5d64b2afdd72fdc23c86f00c91255c32bb0c7",
+        "signature": "f9e41560c92b9e514b9d51d69832e02f4bb387df73c711e3a3b59ed28bb9a3e0"
+      },
+      "../src/model/famix/include.ts": {
+        "version": "53331c81cd4b2f221ed8b0ccfde424b0a1b0ffb531d0fa99f1250ca969dda835",
+        "signature": "4c9a5a18474935f4ab4956eda076bcb213cc51ed836cdb2a2348d6eeac8c0f25"
+      },
+      "../src/model/famix/java_source_language.ts": {
+        "version": "c4e559d5fc39074556bfceeb59d23a60ca3e37fa46558600a47a8bc266838cf4",
+        "signature": "b48058544d9417cc04b3a5099104c50c039f7fcde735e0206e207146dbf9b859"
+      },
+      "../src/model/famix/custom_source_language.ts": {
+        "version": "ed13e2828198aef36dd4c2cab44221c3a2879e8c6ada61e37b584a3b52db39f9",
+        "signature": "7ca55aa827ad2498529b54d969f9fe1b4c0175ea049f81fe1d692f085eccdac9"
+      },
+      "../src/model/famix/smalltalk_monticello_source_language.ts": {
+        "version": "eb380a9d69a22e467d21ca7bb7f935f219ef4c1ecff8316bfb543d0fd01246ad",
+        "signature": "2460ee4c1473ee545ab44a3ad9d017475aafe89fad0996a8d40f944e40d5fba6"
+      },
+      "../src/model/famix/primitive_type.ts": {
+        "version": "53efd99e10971c2c6213efbab77b4bac9e27b04861f826169feebdfc5ef77dc9",
+        "signature": "bd2859b67e8a3e45bc2578a30de11d8b5e8af140d93487712f098fb0d45aa40b"
+      },
+      "../src/model/famix/header.ts": {
+        "version": "c679cc97f79393a365e316dc4a776c69a0d5f31bb10d1ebb09477039b2936692",
+        "signature": "22e27c67713181b4910fa97eff84055b371ae38952b254cb90c3ce782e4f4030"
+      },
+      "../src/model/famix/indexed_file_anchor.ts": {
+        "version": "2130e28787b44635899955cca0acecb0fbab24b1886840fb7815d959aaa54bd6",
+        "signature": "e18119b3313851cf17bee3b7f216e2a9391f606f18d988dee98a5404c75bbc16"
+      },
+      "../src/model/famix/unknown_source_language.ts": {
+        "version": "e92750bc156469199b3e00b837040e2adb0105c76f09d76d02fa7ff9634dfc55",
+        "signature": "9730b910a5668deea9d1cd132bcbedf55c545cd29be9904cdf2aff274a4f8697"
+      },
+      "../src/model/famix/c_source_language.ts": {
+        "version": "a3e057f50556d05be5227fc6b5c8692de8deb48b6a4c0890b7913c1e2e6f4974",
+        "signature": "051190cfdf15505d311f7c09452415f4f7efc24da6f7cfee709991f8bacfb3a0"
+      },
+      "../src/model/famix/source_text_anchor.ts": {
+        "version": "6f0d3b2a065b62462631a54258470c0539a56a6bed323e506cffc9555b5eb142",
+        "signature": "a024002afa3f942138c3b268388041c6f3a2aa2ec1bcef30e2ca595f48329e42"
+      },
+      "../src/model/famix/unknown_variable.ts": {
+        "version": "a691f9ea1e2a0d26a681b4a4cfb6d4c893c4eb6da75ccd9fb442fb3a70e49c62",
+        "signature": "66025fd41d461ffd28c03c240c332dc759a66acdb49cbd148137316b498219ba"
+      },
+      "../src/model/famix/index.ts": {
+        "version": "3b876c9434675a97e3b2e92db715b4d5800f5450479bbd4c91c4f59ec8fbc312",
+        "signature": "4365bdff89ee4dfa2ae24033aa2a048edca57321d48c1f49226a07fa06541139"
+      },
+      "../src/famix_repository.ts": {
+        "version": "6a53389e859e036ec5d32ef89f9b8d66d98b7cd32d0231fa939b12ab76daba39",
+        "signature": "078aaa31d0e39a4c753c775228a69ca7f2e592eca04903c49278aa28e804cee2"
+      },
+      "../src/famix_base_element.ts": {
+        "version": "55e7557dc4cdb41bfacf98bec11835f36bb4b8779f0e528b411fe440e02d5985",
+        "signature": "d40f8c688b3a37f495cb3fb5b5ad5e21858e1579b7ac0de48a4099c0046bacf5"
+      },
+      "../src/model/file/folder.ts": {
+        "version": "d550a587eab3aa1e0dbb8e028f5891c6f93e32a1dfb9a91ec7328d78d31da923",
+        "signature": "800b9b38133768895589a2a66e7b85ebdbebd0829ea48749404a360431f484f4"
+      },
+      "../src/model/file/index.ts": {
+        "version": "4ab6b2a1d74e707c469cf75a3e5e2a7171c5573709a63cf4fcd00be164fc7a92",
+        "signature": "bf023d34983438f8547e553ef5170fd6b4d295b77ced489dcf153a5a761f5a6f"
+      },
+      "../src/index.ts": {
+        "version": "c10ecbd80224cab697382efb06c41b8e04e43a72243b5fa8e8c0ac85241d3199",
+        "signature": "506968bd122511da8e498755d4aa2490af9bfd89fc5c192460b4c2984db95109"
+      }
+    },
+    "options": {
+      "module": 1,
+      "outDir": "./",
+      "incremental": true,
+      "pretty": true,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitReturns": true,
+      "noUnusedParameters": true,
+      "noUnusedLocals": true,
+      "noImplicitAny": true,
+      "declaration": true,
+      "strictNullChecks": true,
+      "strictFunctionTypes": true,
+      "alwaysStrict": true,
+      "target": 4,
+      "sourceMap": true,
+      "configFilePath": "../tsconfig.json"
+    },
+    "referencedMap": {
+      "../src/famix_mse_exporter.ts": [
+        "../src/famix_base_element.ts"
+      ],
+      "../src/model/famix/entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/famix_base_element.ts"
+      ],
+      "../src/model/famix/source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts",
+        "../src/model/famix/sourced_entity.ts"
+      ],
+      "../src/model/famix/comment.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/sourced_entity.ts"
+      ],
+      "../src/model/famix/source_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts",
+        "../src/model/famix/sourced_entity.ts"
+      ],
+      "../src/model/famix/sourced_entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts",
+        "../src/model/famix/entity.ts",
+        "../src/model/famix/comment.ts",
+        "../src/model/famix/source_anchor.ts"
+      ],
+      "../src/model/famix/package.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/named_entity.ts",
+        "../src/model/famix/scoping_entity.ts"
+      ],
+      "../src/model/famix/class.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/parameterizable_class.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/parameterized_type.ts",
+        "../src/model/famix/class.ts"
+      ],
+      "../src/model/famix/parameterized_type.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/parameterizable_class.ts"
+      ],
+      "../src/model/famix/implicit_variable.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/behavioural_entity.ts"
+      ],
+      "../src/model/file/abstract_file.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts"
+      ],
+      "../src/model/file/file.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/file/abstract_file.ts"
+      ],
+      "../src/model/famix/compilation_unit.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/module.ts",
+        "../src/model/file/file.ts"
+      ],
+      "../src/model/famix/module.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/compilation_unit.ts",
+        "../src/model/famix/scoping_entity.ts"
+      ],
+      "../src/model/famix/function.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/model/famix/container_entity.ts",
+        "../src/model/famix/module.ts"
+      ],
+      "../src/model/famix/container_entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/function.ts",
+        "../src/model/famix/named_entity.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/annotation_type.ts"
+      ],
+      "../src/model/famix/association.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/sourced_entity.ts"
+      ],
+      "../src/model/famix/reference.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/association.ts",
+        "../src/model/famix/behavioural_entity.ts"
+      ],
+      "../src/model/famix/local_variable.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/behavioural_entity.ts"
+      ],
+      "../src/model/famix/access.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/association.ts",
+        "../src/model/famix/behavioural_entity.ts"
+      ],
+      "../src/model/famix/parameter.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/behavioural_entity.ts"
+      ],
+      "../src/model/famix/behavioural_entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/implicit_variable.ts",
+        "../src/model/famix/invocation.ts",
+        "../src/model/famix/container_entity.ts",
+        "../src/model/famix/reference.ts",
+        "../src/model/famix/local_variable.ts",
+        "../src/model/famix/access.ts",
+        "../src/model/famix/parameter.ts"
+      ],
+      "../src/model/famix/attribute.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/inheritance.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/association.ts"
+      ],
+      "../src/model/famix/type_alias.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/exception.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts",
+        "../src/model/famix/class.ts"
+      ],
+      "../src/model/famix/caught_exception.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/method.ts",
+        "../src/model/famix/exception.ts"
+      ],
+      "../src/model/famix/declared_exception.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/method.ts",
+        "../src/model/famix/exception.ts"
+      ],
+      "../src/model/famix/thrown_exception.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/method.ts",
+        "../src/model/famix/exception.ts"
+      ],
+      "../src/model/famix/method.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/caught_exception.ts",
+        "../src/model/famix/declared_exception.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/model/famix/thrown_exception.ts"
+      ],
+      "../src/model/famix/type.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/parameterized_type.ts",
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/model/famix/container_entity.ts",
+        "../src/model/famix/attribute.ts",
+        "../src/model/famix/reference.ts",
+        "../src/model/famix/inheritance.ts",
+        "../src/model/famix/type_alias.ts",
+        "../src/model/famix/method.ts"
+      ],
+      "../src/model/famix/annotation_type.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/container_entity.ts",
+        "../src/model/famix/annotation_instance.ts"
+      ],
+      "../src/model/famix/annotation_type_attribute.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/attribute.ts",
+        "../src/model/famix/annotation_instance_attribute.ts"
+      ],
+      "../src/model/famix/annotation_instance_attribute.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts",
+        "../src/model/famix/annotation_type_attribute.ts",
+        "../src/model/famix/annotation_instance.ts"
+      ],
+      "../src/model/famix/annotation_instance.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts",
+        "../src/model/famix/named_entity.ts",
+        "../src/model/famix/annotation_type.ts",
+        "../src/model/famix/annotation_instance_attribute.ts"
+      ],
+      "../src/model/famix/named_entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/invocation.ts",
+        "../src/model/famix/sourced_entity.ts",
+        "../src/model/famix/package.ts",
+        "../src/model/famix/annotation_instance.ts"
+      ],
+      "../src/model/famix/invocation.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/named_entity.ts",
+        "../src/model/famix/association.ts",
+        "../src/model/famix/behavioural_entity.ts"
+      ],
+      "../src/model/famix/dereferenced_invocation.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/invocation.ts"
+      ],
+      "../src/model/famix/leaf_entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/named_entity.ts"
+      ],
+      "../src/model/famix/structural_entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/dereferenced_invocation.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/access.ts",
+        "../src/model/famix/leaf_entity.ts"
+      ],
+      "../src/model/famix/global_variable.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/scoping_entity.ts",
+        "../src/model/famix/module.ts"
+      ],
+      "../src/model/famix/scoping_entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/global_variable.ts",
+        "../src/model/famix/container_entity.ts"
+      ],
+      "../src/model/famix/namespace.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/scoping_entity.ts"
+      ],
+      "../src/model/famix/abstract_file_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_anchor.ts"
+      ],
+      "../src/model/famix/file_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/abstract_file_anchor.ts"
+      ],
+      "../src/model/famix/multiple_file_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/file_anchor.ts",
+        "../src/model/famix/source_anchor.ts"
+      ],
+      "../src/model/famix/enum.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/enum_value.ts"
+      ],
+      "../src/model/famix/enum_value.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/enum.ts"
+      ],
+      "../src/model/famix/parameter_type.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/pharo_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_anchor.ts"
+      ],
+      "../src/model/famix/smalltalk_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/include.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/association.ts"
+      ],
+      "../src/model/famix/java_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/custom_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/smalltalk_monticello_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/primitive_type.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/header.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/file/file.ts"
+      ],
+      "../src/model/famix/indexed_file_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/abstract_file_anchor.ts"
+      ],
+      "../src/model/famix/unknown_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/c_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/source_text_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_anchor.ts"
+      ],
+      "../src/model/famix/unknown_variable.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts"
+      ],
+      "../src/model/famix/index.ts": [
+        "../src/model/famix/namespace.ts",
+        "../src/model/famix/function.ts",
+        "../src/model/famix/leaf_entity.ts",
+        "../src/model/famix/module.ts",
+        "../src/model/famix/multiple_file_anchor.ts",
+        "../src/model/famix/enum_value.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/parameter_type.ts",
+        "../src/model/famix/pharo_anchor.ts",
+        "../src/model/famix/abstract_file_anchor.ts",
+        "../src/model/famix/annotation_type.ts",
+        "../src/model/famix/source_anchor.ts",
+        "../src/model/famix/smalltalk_source_language.ts",
+        "../src/model/famix/reference.ts",
+        "../src/model/famix/include.ts",
+        "../src/model/famix/java_source_language.ts",
+        "../src/model/famix/declared_exception.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/invocation.ts",
+        "../src/model/famix/comment.ts",
+        "../src/model/famix/source_language.ts",
+        "../src/model/famix/parameterized_type.ts",
+        "../src/model/famix/compilation_unit.ts",
+        "../src/model/famix/method.ts",
+        "../src/model/famix/named_entity.ts",
+        "../src/model/famix/thrown_exception.ts",
+        "../src/model/famix/caught_exception.ts",
+        "../src/model/famix/custom_source_language.ts",
+        "../src/model/famix/global_variable.ts",
+        "../src/model/famix/type_alias.ts",
+        "../src/model/famix/enum.ts",
+        "../src/model/famix/smalltalk_monticello_source_language.ts",
+        "../src/model/famix/association.ts",
+        "../src/model/famix/access.ts",
+        "../src/model/famix/primitive_type.ts",
+        "../src/model/famix/header.ts",
+        "../src/model/famix/inheritance.ts",
+        "../src/model/famix/annotation_type_attribute.ts",
+        "../src/model/famix/class.ts",
+        "../src/model/famix/parameter.ts",
+        "../src/model/famix/annotation_instance.ts",
+        "../src/model/famix/sourced_entity.ts",
+        "../src/model/famix/indexed_file_anchor.ts",
+        "../src/model/famix/scoping_entity.ts",
+        "../src/model/famix/annotation_instance_attribute.ts",
+        "../src/model/famix/package.ts",
+        "../src/model/famix/file_anchor.ts",
+        "../src/model/famix/unknown_source_language.ts",
+        "../src/model/famix/parameterizable_class.ts",
+        "../src/model/famix/container_entity.ts",
+        "../src/model/famix/c_source_language.ts",
+        "../src/model/famix/dereferenced_invocation.ts",
+        "../src/model/famix/implicit_variable.ts",
+        "../src/model/famix/exception.ts",
+        "../src/model/famix/local_variable.ts",
+        "../src/model/famix/source_text_anchor.ts",
+        "../src/model/famix/unknown_variable.ts",
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/model/famix/entity.ts",
+        "../src/model/famix/attribute.ts"
+      ],
+      "../src/famix_repository.ts": [
+        "../src/famix_base_element.ts",
+        "../src/model/famix/index.ts"
+      ],
+      "../src/famix_base_element.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/famix_repository.ts"
+      ],
+      "../src/model/file/folder.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/file/abstract_file.ts"
+      ],
+      "../src/model/file/index.ts": [
+        "../src/model/file/abstract_file.ts",
+        "../src/model/file/folder.ts",
+        "../src/model/file/file.ts"
+      ],
+      "../src/index.ts": [
+        "../src/model/famix/index.ts",
+        "../src/model/file/index.ts",
+        "../src/famix_base_element.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/famix_repository.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "../src/famix_mse_exporter.ts": [
+        "../src/famix_base_element.ts"
+      ],
+      "../src/index.ts": [
+        "../src/famix_base_element.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/famix_repository.ts",
+        "../src/model/famix/index.ts",
+        "../src/model/file/index.ts"
+      ],
+      "../src/model/file/folder.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/file/abstract_file.ts"
+      ],
+      "../src/model/file/index.ts": [
+        "../src/model/file/abstract_file.ts",
+        "../src/model/file/folder.ts",
+        "../src/model/file/file.ts"
+      ],
+      "../src/famix_base_element.ts": [
+        "../src/famix_repository.ts",
+        "../src/famix_mse_exporter.ts"
+      ],
+      "../src/famix_repository.ts": [
+        "../src/model/famix/index.ts",
+        "../src/famix_base_element.ts"
+      ],
+      "../src/model/famix/entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/famix_base_element.ts"
+      ],
+      "../src/model/famix/index.ts": [
+        "../src/model/famix/namespace.ts",
+        "../src/model/famix/function.ts",
+        "../src/model/famix/leaf_entity.ts",
+        "../src/model/famix/module.ts",
+        "../src/model/famix/multiple_file_anchor.ts",
+        "../src/model/famix/enum_value.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/parameter_type.ts",
+        "../src/model/famix/pharo_anchor.ts",
+        "../src/model/famix/abstract_file_anchor.ts",
+        "../src/model/famix/annotation_type.ts",
+        "../src/model/famix/source_anchor.ts",
+        "../src/model/famix/smalltalk_source_language.ts",
+        "../src/model/famix/reference.ts",
+        "../src/model/famix/include.ts",
+        "../src/model/famix/java_source_language.ts",
+        "../src/model/famix/declared_exception.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/invocation.ts",
+        "../src/model/famix/comment.ts",
+        "../src/model/famix/source_language.ts",
+        "../src/model/famix/parameterized_type.ts",
+        "../src/model/famix/compilation_unit.ts",
+        "../src/model/famix/method.ts",
+        "../src/model/famix/named_entity.ts",
+        "../src/model/famix/thrown_exception.ts",
+        "../src/model/famix/caught_exception.ts",
+        "../src/model/famix/custom_source_language.ts",
+        "../src/model/famix/global_variable.ts",
+        "../src/model/famix/type_alias.ts",
+        "../src/model/famix/enum.ts",
+        "../src/model/famix/smalltalk_monticello_source_language.ts",
+        "../src/model/famix/association.ts",
+        "../src/model/famix/access.ts",
+        "../src/model/famix/primitive_type.ts",
+        "../src/model/famix/header.ts",
+        "../src/model/famix/inheritance.ts",
+        "../src/model/famix/annotation_type_attribute.ts",
+        "../src/model/famix/class.ts",
+        "../src/model/famix/parameter.ts",
+        "../src/model/famix/annotation_instance.ts",
+        "../src/model/famix/sourced_entity.ts",
+        "../src/model/famix/indexed_file_anchor.ts",
+        "../src/model/famix/scoping_entity.ts",
+        "../src/model/famix/annotation_instance_attribute.ts",
+        "../src/model/famix/package.ts",
+        "../src/model/famix/file_anchor.ts",
+        "../src/model/famix/unknown_source_language.ts",
+        "../src/model/famix/parameterizable_class.ts",
+        "../src/model/famix/container_entity.ts",
+        "../src/model/famix/c_source_language.ts",
+        "../src/model/famix/dereferenced_invocation.ts",
+        "../src/model/famix/implicit_variable.ts",
+        "../src/model/famix/exception.ts",
+        "../src/model/famix/local_variable.ts",
+        "../src/model/famix/source_text_anchor.ts",
+        "../src/model/famix/unknown_variable.ts",
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/model/famix/entity.ts",
+        "../src/model/famix/attribute.ts"
+      ],
+      "../src/model/famix/annotation_instance.ts": [
+        "../src/model/famix/named_entity.ts",
+        "../src/model/famix/annotation_type.ts",
+        "../src/model/famix/annotation_instance_attribute.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts"
+      ],
+      "../src/model/famix/named_entity.ts": [
+        "../src/model/famix/invocation.ts",
+        "../src/model/famix/annotation_instance.ts",
+        "../src/model/famix/package.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/sourced_entity.ts"
+      ],
+      "../src/model/famix/leaf_entity.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/named_entity.ts"
+      ],
+      "../src/model/famix/structural_entity.ts": [
+        "../src/model/famix/access.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/dereferenced_invocation.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/leaf_entity.ts"
+      ],
+      "../src/model/famix/unknown_variable.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts"
+      ],
+      "../src/model/famix/enum_value.ts": [
+        "../src/model/famix/enum.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts"
+      ],
+      "../src/model/famix/enum.ts": [
+        "../src/model/famix/enum_value.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/global_variable.ts": [
+        "../src/model/famix/scoping_entity.ts",
+        "../src/model/famix/module.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts"
+      ],
+      "../src/model/famix/scoping_entity.ts": [
+        "../src/model/famix/global_variable.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/container_entity.ts"
+      ],
+      "../src/model/famix/namespace.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/scoping_entity.ts"
+      ],
+      "../src/model/famix/module.ts": [
+        "../src/model/famix/compilation_unit.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/scoping_entity.ts"
+      ],
+      "../src/model/famix/function.ts": [
+        "../src/model/famix/container_entity.ts",
+        "../src/model/famix/module.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/behavioural_entity.ts"
+      ],
+      "../src/model/famix/container_entity.ts": [
+        "../src/model/famix/type.ts",
+        "../src/model/famix/function.ts",
+        "../src/model/famix/annotation_type.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/named_entity.ts"
+      ],
+      "../src/model/famix/annotation_type.ts": [
+        "../src/model/famix/container_entity.ts",
+        "../src/model/famix/annotation_instance.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/type.ts": [
+        "../src/model/famix/container_entity.ts",
+        "../src/model/famix/reference.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/model/famix/type_alias.ts",
+        "../src/model/famix/inheritance.ts",
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/model/famix/method.ts",
+        "../src/model/famix/attribute.ts",
+        "../src/model/famix/parameterized_type.ts",
+        "../src/famix_mse_exporter.ts"
+      ],
+      "../src/model/famix/primitive_type.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/parameter_type.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/method.ts": [
+        "../src/model/famix/thrown_exception.ts",
+        "../src/model/famix/caught_exception.ts",
+        "../src/model/famix/type.ts",
+        "../src/model/famix/declared_exception.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/behavioural_entity.ts"
+      ],
+      "../src/model/famix/thrown_exception.ts": [
+        "../src/model/famix/method.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/exception.ts"
+      ],
+      "../src/model/famix/declared_exception.ts": [
+        "../src/model/famix/method.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/exception.ts"
+      ],
+      "../src/model/famix/caught_exception.ts": [
+        "../src/model/famix/method.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/exception.ts"
+      ],
+      "../src/model/famix/type_alias.ts": [
+        "../src/model/famix/type.ts",
+        "../src/famix_mse_exporter.ts"
+      ],
+      "../src/model/famix/inheritance.ts": [
+        "../src/model/famix/type.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/association.ts"
+      ],
+      "../src/model/famix/attribute.ts": [
+        "../src/model/famix/type.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts"
+      ],
+      "../src/model/famix/annotation_type_attribute.ts": [
+        "../src/model/famix/annotation_instance_attribute.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/attribute.ts"
+      ],
+      "../src/model/famix/annotation_instance_attribute.ts": [
+        "../src/model/famix/annotation_type_attribute.ts",
+        "../src/model/famix/annotation_instance.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts"
+      ],
+      "../src/model/famix/behavioural_entity.ts": [
+        "../src/model/famix/type.ts",
+        "../src/model/famix/implicit_variable.ts",
+        "../src/model/famix/local_variable.ts",
+        "../src/model/famix/reference.ts",
+        "../src/model/famix/invocation.ts",
+        "../src/model/famix/access.ts",
+        "../src/model/famix/parameter.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/container_entity.ts"
+      ],
+      "../src/model/famix/invocation.ts": [
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/model/famix/named_entity.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/association.ts"
+      ],
+      "../src/model/famix/dereferenced_invocation.ts": [
+        "../src/model/famix/structural_entity.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/invocation.ts"
+      ],
+      "../src/model/famix/parameter.ts": [
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts"
+      ],
+      "../src/model/famix/access.ts": [
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/model/famix/structural_entity.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/association.ts"
+      ],
+      "../src/model/famix/local_variable.ts": [
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts"
+      ],
+      "../src/model/famix/reference.ts": [
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/model/famix/type.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/association.ts"
+      ],
+      "../src/model/famix/implicit_variable.ts": [
+        "../src/model/famix/behavioural_entity.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/structural_entity.ts"
+      ],
+      "../src/model/famix/parameterized_type.ts": [
+        "../src/model/famix/parameterizable_class.ts",
+        "../src/model/famix/type.ts",
+        "../src/famix_mse_exporter.ts"
+      ],
+      "../src/model/famix/parameterizable_class.ts": [
+        "../src/model/famix/parameterized_type.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/class.ts"
+      ],
+      "../src/model/famix/class.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/type.ts"
+      ],
+      "../src/model/famix/exception.ts": [
+        "../src/model/famix/class.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts"
+      ],
+      "../src/model/famix/compilation_unit.ts": [
+        "../src/model/famix/module.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/file/file.ts"
+      ],
+      "../src/model/famix/package.ts": [
+        "../src/model/famix/named_entity.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/scoping_entity.ts"
+      ],
+      "../src/model/file/abstract_file.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts"
+      ],
+      "../src/model/file/file.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/file/abstract_file.ts"
+      ],
+      "../src/model/famix/header.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/file/file.ts"
+      ],
+      "../src/model/famix/sourced_entity.ts": [
+        "../src/model/famix/source_anchor.ts",
+        "../src/model/famix/comment.ts",
+        "../src/model/famix/source_language.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts"
+      ],
+      "../src/model/famix/association.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/sourced_entity.ts"
+      ],
+      "../src/model/famix/include.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/association.ts"
+      ],
+      "../src/model/famix/source_anchor.ts": [
+        "../src/model/famix/sourced_entity.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts"
+      ],
+      "../src/model/famix/source_text_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_anchor.ts"
+      ],
+      "../src/model/famix/pharo_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_anchor.ts"
+      ],
+      "../src/model/famix/multiple_file_anchor.ts": [
+        "../src/model/famix/file_anchor.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_anchor.ts"
+      ],
+      "../src/model/famix/abstract_file_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_anchor.ts"
+      ],
+      "../src/model/famix/indexed_file_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/abstract_file_anchor.ts"
+      ],
+      "../src/model/famix/file_anchor.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/abstract_file_anchor.ts"
+      ],
+      "../src/model/famix/comment.ts": [
+        "../src/model/famix/sourced_entity.ts",
+        "../src/famix_mse_exporter.ts"
+      ],
+      "../src/model/famix/source_language.ts": [
+        "../src/model/famix/sourced_entity.ts",
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/entity.ts"
+      ],
+      "../src/model/famix/c_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/unknown_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/smalltalk_monticello_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/custom_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/java_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ],
+      "../src/model/famix/smalltalk_source_language.ts": [
+        "../src/famix_mse_exporter.ts",
+        "../src/model/famix/source_language.ts"
+      ]
+    },
+    "semanticDiagnosticsPerFile": [
+      "../src/famix_mse_exporter.ts",
+      "../src/model/famix/entity.ts",
+      "../src/model/famix/source_language.ts",
+      "../src/model/famix/comment.ts",
+      "../src/model/famix/source_anchor.ts",
+      "../src/model/famix/sourced_entity.ts",
+      "../src/model/famix/package.ts",
+      "../src/model/famix/class.ts",
+      "../src/model/famix/parameterizable_class.ts",
+      "../src/model/famix/parameterized_type.ts",
+      "../src/model/famix/implicit_variable.ts",
+      "../src/model/file/abstract_file.ts",
+      "../src/model/file/file.ts",
+      "../src/model/famix/compilation_unit.ts",
+      "../src/model/famix/module.ts",
+      "../src/model/famix/function.ts",
+      "../src/model/famix/container_entity.ts",
+      "../src/model/famix/association.ts",
+      "../src/model/famix/reference.ts",
+      "../src/model/famix/local_variable.ts",
+      "../src/model/famix/access.ts",
+      "../src/model/famix/parameter.ts",
+      "../src/model/famix/behavioural_entity.ts",
+      "../src/model/famix/attribute.ts",
+      "../src/model/famix/inheritance.ts",
+      "../src/model/famix/type_alias.ts",
+      "../src/model/famix/exception.ts",
+      "../src/model/famix/caught_exception.ts",
+      "../src/model/famix/declared_exception.ts",
+      "../src/model/famix/thrown_exception.ts",
+      "../src/model/famix/method.ts",
+      "../src/model/famix/type.ts",
+      "../src/model/famix/annotation_type.ts",
+      "../src/model/famix/annotation_type_attribute.ts",
+      "../src/model/famix/annotation_instance_attribute.ts",
+      "../src/model/famix/annotation_instance.ts",
+      "../src/model/famix/named_entity.ts",
+      "../src/model/famix/invocation.ts",
+      "../src/model/famix/dereferenced_invocation.ts",
+      "../src/model/famix/leaf_entity.ts",
+      "../src/model/famix/structural_entity.ts",
+      "../src/model/famix/global_variable.ts",
+      "../src/model/famix/scoping_entity.ts",
+      "../src/model/famix/namespace.ts",
+      "../src/model/famix/abstract_file_anchor.ts",
+      "../src/model/famix/file_anchor.ts",
+      "../src/model/famix/multiple_file_anchor.ts",
+      "../src/model/famix/enum.ts",
+      "../src/model/famix/enum_value.ts",
+      "../src/model/famix/parameter_type.ts",
+      "../src/model/famix/pharo_anchor.ts",
+      "../src/model/famix/smalltalk_source_language.ts",
+      "../src/model/famix/include.ts",
+      "../src/model/famix/java_source_language.ts",
+      "../src/model/famix/custom_source_language.ts",
+      "../src/model/famix/smalltalk_monticello_source_language.ts",
+      "../src/model/famix/primitive_type.ts",
+      "../src/model/famix/header.ts",
+      "../src/model/famix/indexed_file_anchor.ts",
+      "../src/model/famix/unknown_source_language.ts",
+      "../src/model/famix/c_source_language.ts",
+      "../src/model/famix/source_text_anchor.ts",
+      "../src/model/famix/unknown_variable.ts",
+      "../src/model/famix/index.ts",
+      "../src/famix_repository.ts",
+      "../src/famix_base_element.ts",
+      "../src/model/file/folder.ts",
+      "../src/model/file/index.ts",
+      "../src/index.ts",
+      "../node_modules/typescript/lib/lib.es2015.d.ts",
+      "../node_modules/typescript/lib/lib.es2016.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.full.d.ts",
+      "../node_modules/typescript/lib/lib.es5.d.ts",
+      "../node_modules/typescript/lib/lib.dom.d.ts",
+      "../node_modules/typescript/lib/lib.dom.iterable.d.ts",
+      "../node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+      "../node_modules/typescript/lib/lib.scripthost.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.core.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.collection.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.generator.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.iterable.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.promise.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.proxy.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.reflect.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.symbol.d.ts",
+      "../node_modules/typescript/lib/lib.es2015.symbol.wellknown.d.ts",
+      "../node_modules/typescript/lib/lib.es2016.array.include.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.object.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.string.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.intl.d.ts",
+      "../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts"
+    ]
+  },
+  "version": "3.6.3"
+}
