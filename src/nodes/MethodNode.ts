@@ -1,4 +1,4 @@
-import {MethodDeclaration, ModifierableNode, Node,SyntaxKind} from "ts-morph"
+import {MethodDeclaration, ModifierableNode, Node} from "ts-morph"
 import {Element} from "../model/Element"
 import {MSEDocument} from "../MSEDocument"
 import {FameNode} from "./index"

@@ -1,6 +1,7 @@
 import { Project } from "ts-morph"
 import * as c from '../constants'
 import {FileNode} from './nodes'
+import {Element} from "./model/Element"
 
 export class MSEDocument {
 
@@ -18,7 +19,21 @@ export class MSEDocument {
     }
 
     public explore(): void {
+        this._project.getDirectories().forEach (element =>{
+            let newElement = new Element(this.getNextId,"Directory",[
+                ["name", `'${element.getBaseName()}'`],
+                ["path", `'${element.getPath()}'`],
+            ])
+            newElement.toMSE();
+        })
+        
         this._project.getSourceFiles().forEach(sourceFile => {
+            let newFIle = new Element(this.getNextId,"SourceFile",[
+                ["fileName", `'${sourceFile.getFilePath()}'`],
+                ["startLine", String(sourceFile.getStartLineNumber())],
+                ["endLine", String(sourceFile.getEndLineNumber())],
+            ])
+            newFIle.toMSE();
             this._fileList.push(new FileNode(this, sourceFile))
         })
     }
