@@ -8,6 +8,7 @@ export class MSEDocument {
     private _project: Project
     private _projectPath: string
     private _fileList: FileNode[]
+    private _elementList: Element[]
     private _idCounter: number
 
     constructor(projectPath: string) {
@@ -15,34 +16,32 @@ export class MSEDocument {
         this._projectPath=projectPath
         this._project.addSourceFilesAtPaths(this._projectPath+"/**/*{.d.ts,.ts}")
         this._fileList = []
+        this._elementList = []
         this._idCounter=1
     }
 
     public explore(): void {
-        this._project.getDirectories().forEach (element =>{
-            let newElement = new Element(this.getNextId,"Directory",[
-                ["name", `'${element.getBaseName()}'`],
-                ["path", `'${element.getPath()}'`],
-            ])
-            newElement.toMSE();
-        })
+        //TODO?
+        // this._project.getDirectories().forEach (element =>{
+        //     this._elementList.push(new Element(this.getNextId,"Folder",[
+        //         ["name", `'${element.getPath()}'`],
+        //     ], "FILE"))
+        // })
         
         this._project.getSourceFiles().forEach(sourceFile => {
-            let newFIle = new Element(this.getNextId,"SourceFile",[
-                ["fileName", `'${sourceFile.getFilePath()}'`],
-                ["startLine", String(sourceFile.getStartLineNumber())],
-                ["endLine", String(sourceFile.getEndLineNumber())],
-            ])
-            newFIle.toMSE();
+            //TODO?
+            // this._elementList.push(new Element(this.getNextId,"File",[
+            //     ["name", `'${sourceFile.getFilePath()}'`],
+            // ], "FILE"))
             this._fileList.push(new FileNode(this, sourceFile))
         })
     }
 
     //TODO?
-    /*public findByName(name: string): any {
-    }
-    public findById(id: number): any {
-    }*/
+    // public findByName(name: string): any {
+    // }
+    // public findById(id: number): any {
+    // }
 
     public generateFile(path: string): void {
         const sF = this._project.createSourceFile(path, this.toMSE(), {overwrite: true})
@@ -50,12 +49,14 @@ export class MSEDocument {
     }
 
     public toMSE(): string {
-        let result = c.OPEN_TOKEN+"\n"
+        let mse = c.OPEN_TOKEN+"\n"
         this._fileList.forEach(file => {
-            result += file.toMSE()
+            mse += file.toMSE()
         })
-        result += "\n"+c.CLOSE_TOKEN
-        return result;
+        this._elementList.forEach(element => {
+            mse += element.toMSE()
+        })
+        return mse += "\n"+c.CLOSE_TOKEN
     }
 
     public showTree(): void {
