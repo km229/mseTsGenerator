@@ -1,33 +1,34 @@
-import { Project } from "ts-morph"
+import {Project} from "ts-morph"
 import * as c from '../constants'
 import {FileNode} from './nodes'
+import {Element} from "./model/Element"
 
 export class MSEDocument {
     private _project: Project
     private _fileList: FileNode[]
+    private _elementList: Element[]
     private _idCounter: number
 
     constructor(projectPath: string) {
-        this._project=new Project()
-        this._projectPath=projectPath
-        this._project.addSourceFilesAtPaths(this._projectPath+"/**/*{.d.ts,.ts}")
+        this._project = new Project()
+        this._project.addSourceFilesAtPaths(projectPath + "/**/*{.d.ts,.ts}")
         this._fileList = []
-        this._idCounter=1
+        this._elementList = []
+        this._idCounter = 1
     }
 
     public explore(): void {
-        let file
         this._project.getSourceFiles().forEach(sourceFile => {
-            file = new FileNode(sourceFile, this)
-            this._fileList.push(file)
-            file.explore()
+            this._fileList.push(new FileNode(this, sourceFile))
         })
     }
 
-    /* TODO - A revoir
-    public findById(id: number): Node {
+    //TODO?
+    /*public findByName(name: string): any {
     }
-    */
+
+    public findById(id: number): any {
+    }*/
 
     public generateFile(path: string): void {
         const sF = this._project.createSourceFile(path, this.toMSE(), {overwrite: true})
@@ -35,12 +36,14 @@ export class MSEDocument {
     }
 
     public toMSE(): string {
-        let result = c.OPEN_TOKEN+"\n"
+        let mse = c.OPEN_TOKEN + "\n"
         this._fileList.forEach(file => {
-            result += file.toMSE()
+            mse += file.toMSE()
         })
-        result += "\n"+c.CLOSE_TOKEN
-        return result;
+        this._elementList.forEach(element => {
+            mse += element.toMSE()
+        })
+        return mse += "\n" + c.CLOSE_TOKEN
     }
 
     public showTree(): void {

@@ -1,5 +1,4 @@
-
-import {ClassDeclaration, ModifierableNode, Node} from "ts-morph"
+import {ClassDeclaration} from "ts-morph"
 import {Element} from "../model/Element"
 import {MSEDocument} from "../MSEDocument"
 import {FameNode} from "./index"
@@ -12,6 +11,11 @@ export class ClassNode extends FameNode<ClassDeclaration> {
         ]))
     }
 
+    toMSE(): string {
+        return "";
+    }
+
+
     explore(): void {
 
         //Add fileAnchor for this class
@@ -20,7 +24,7 @@ export class ClassNode extends FameNode<ClassDeclaration> {
         this._elementList.push(fileAnchor)
 
         // Add modifiers
-        this.getModifiers(this._node)!=undefined ? this._element.addAttribute('modifiers', this.getModifiers(this._node)) : null
+        this.getModifiers(this._node) != undefined ? this._element.addAttribute('modifiers', this.getModifiers(this._node)) : null
 
         //Add attributes
         this._node.getProperties().forEach(prop => {
@@ -31,15 +35,14 @@ export class ClassNode extends FameNode<ClassDeclaration> {
                 //["declaredType", `'${prop.getType().getText()}'`],
                 ["parentType", `(ref: ${this._element.id})`],
             ])
-            this.getModifiers(prop)!=undefined ? attrElement.addAttribute('modifiers', this.getModifiers(prop)) : null
+            this.getModifiers(prop) != undefined ? attrElement.addAttribute('modifiers', this.getModifiers(prop)) : null
             let propertyAnchor = this.getNewIndexedFileAnchor(attrElement.id, prop.getFirstChild())
             attrElement.addAttribute("sourceAnchor", `(ref: ${propertyAnchor.id})`)
 
             this._elementList.push(propertyAnchor)
             this._elementList.push(attrElement)
 
-    toMSE(): string {
-        return "";
+        })
     }
 
 }

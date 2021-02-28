@@ -1,5 +1,5 @@
 import {MSEDocument} from "../MSEDocument"
-import {Node} from "ts-morph"
+import {ModifierableNode, Node} from "ts-morph"
 import {Element} from '../model/Element'
 
 export abstract class FameNode<NodeType extends Node> {
@@ -31,8 +31,6 @@ export abstract class FameNode<NodeType extends Node> {
         return mse += this._element.toMSE()
     }
 
-<<<<<<< HEAD
-=======
     hasModifiers(node: ModifierableNode): boolean {
         if(this.getModifiers(node)!=undefined){
             return true
@@ -65,7 +63,6 @@ export abstract class FameNode<NodeType extends Node> {
             ["element", `(ref: ${ref})`],
         ])
     };
->>>>>>> step_method
 
     abstract explore() : void;
 

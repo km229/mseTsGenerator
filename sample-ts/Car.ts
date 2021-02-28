@@ -1,7 +1,12 @@
-class Car { 
-    Engine: string; // par défaut, Engine est public 
+class testNode extends Node {
 
-    constructor(engine: string) { 
-        this.Engine = engine; 
-    } 
-} 
+}
+
+class Car implements Blah {
+    Engine: string;
+    test: string;
+
+    constructor(engine: string) {
+        this.Engine = engine;
+    }
+}
