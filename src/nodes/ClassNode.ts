@@ -1,12 +1,12 @@
 
+import {ClassDeclaration, ModifierableNode, Node} from "ts-morph"
 import {Element} from "../model/Element"
 import {MSEDocument} from "../MSEDocument"
-import * as src from "./index"
-import * as ts from "ts-morph"
+import {FameNode} from "./index"
 
-export class ClassNode extends src.FameNode<ts.ClassDeclaration> {
+export class ClassNode extends FameNode<ClassDeclaration> {
 
-    constructor(node: ts.ClassDeclaration, ctx: MSEDocument) {
+    constructor(node: ClassDeclaration, ctx: MSEDocument) {
         super(ctx, node, new Element(ctx.getNextId, "Class", [
             ['name', `'${node.getName()}'`],
         ]))
@@ -38,21 +38,8 @@ export class ClassNode extends src.FameNode<ts.ClassDeclaration> {
             this._elementList.push(propertyAnchor)
             this._elementList.push(attrElement)
 
-        })
-        
-        this._node.getInstanceMethods().forEach(node =>{
-            this._nodeList.push(new src.MethodNode(node as ts.MethodDeclaration, this._ctx))
-        })
-
-        this._node.getConstructors().forEach(node =>{
-            this._nodeList.push(new src.ConstructorNode(node as ts.ConstructorDeclaration, this._ctx))
-        })
-
-        //Add methods
-
-        //Add inheritance
-
-
+    toMSE(): string {
+        return "";
     }
 
 }
