@@ -3,9 +3,7 @@ import * as c from '../constants'
 import {FileNode} from './nodes'
 
 export class MSEDocument {
-
     private _project: Project
-    private _projectPath: string
     private _fileList: FileNode[]
     private _idCounter: number
 
@@ -18,17 +16,18 @@ export class MSEDocument {
     }
 
     public explore(): void {
+        let file
         this._project.getSourceFiles().forEach(sourceFile => {
-            this._fileList.push(new FileNode(this, sourceFile))
+            file = new FileNode(sourceFile, this)
+            this._fileList.push(file)
+            file.explore()
         })
     }
 
-    //TODO?
-    /*public findByName(name: string): any {
+    /* TODO - A revoir
+    public findById(id: number): Node {
     }
-
-    public findById(id: number): any {
-    }*/
+    */
 
     public generateFile(path: string): void {
         const sF = this._project.createSourceFile(path, this.toMSE(), {overwrite: true})

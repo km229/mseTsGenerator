@@ -1,26 +1,7 @@
+class Car { 
+    Engine: string; // par défaut, Engine est public 
 
-class testNode extends Node {
-
-}
-
-class Car implements Blah {
-    Engine: string;
-    test: string;
-
-    constructor(engine: string) {
-        this.Engine = engine;
-    }
-}
-
-class AnotherCar extends Car {
-    Color: string;
-
-    constructor(engine: string, color: string) {
-        super(engine)
-        this.Color = color
-    }
-}
-
-interface Blah {
-    test: string
-}
+    constructor(engine: string) { 
+        this.Engine = engine; 
+    } 
+} 

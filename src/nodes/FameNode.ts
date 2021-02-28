@@ -31,6 +31,41 @@ export abstract class FameNode<NodeType extends Node> {
         return mse += this._element.toMSE()
     }
 
+<<<<<<< HEAD
+=======
+    hasModifiers(node: ModifierableNode): boolean {
+        if(this.getModifiers(node)!=undefined){
+            return true
+        }
+        return false
+    }
+
+    getModifiers(node: ModifierableNode): string {
+        let modifiers
+        if(node.getModifiers().length > 0){
+            modifiers=""
+            node.getModifiers().forEach(modifier => {
+                modifiers += `'${modifier.getText()}' `
+            })
+            modifiers=modifiers.slice(0, -1)
+        }
+        return modifiers
+    }
+
+    getNewIndexedFileAnchor(ref: number, node: Node): Element {
+
+        let startNumber = node.getSourceFile().getLineAndColumnAtPos(node.getPos())
+        let endNumber = node.getSourceFile().getLineAndColumnAtPos(node.getEnd())
+        return new Element(this._ctx.getNextId, "FileAnchor", [
+            ["fileName", `'${node.getSourceFile().getFilePath()}'`],
+            ["startLine", String(startNumber.line)],
+            ["endLine", String(endNumber.line)],
+            ["startColumn", String(startNumber.column)],
+            ["endColumn", String(endNumber.column)],
+            ["element", `(ref: ${ref})`],
+        ])
+    };
+>>>>>>> step_method
 
     abstract explore() : void;
 
