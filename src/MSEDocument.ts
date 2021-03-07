@@ -1,69 +1,27 @@
-import {Project} from "ts-morph"
-import * as c from '../constants'
-import {FileNode} from './nodes'
-import {Element} from "./model/Element"
+import {FamixRepository} from "famix/dist/famix_repository"
+import {ProjectNode} from "./ProjectNode"
 
 export class MSEDocument {
-    private _project: Project
-    private _fileList: FileNode[]
-    private _elementList: Element[]
-    private _idCounter: number
+
+    private static _fmx: FamixRepository
+    private static _project: ProjectNode
 
     constructor(projectPath: string) {
-        this._project = new Project()
-        this._project.addSourceFilesAtPaths(projectPath + "/**/*{.d.ts,.ts}")
-        this._fileList = []
-        this._elementList = []
-        this._idCounter = 1
+        MSEDocument._fmx = new FamixRepository()
+        MSEDocument._project = new ProjectNode(projectPath)
+        MSEDocument._project.execute()
     }
 
-    public explore(): void {
-        this._project.getSourceFiles().forEach(sourceFile => {
-            this._fileList.push(new FileNode(this, sourceFile))
-        })
+    static getFamixRepository(): FamixRepository {
+        if (!MSEDocument._fmx) {
+            MSEDocument._fmx = new FamixRepository()
+        }
+        return MSEDocument._fmx
     }
 
-    //TODO?
-    /*public findByName(name: string): any {
-    }
-
-    public findById(id: number): any {
-    }*/
-
-    public generateFile(path: string): void {
-        const sF = this._project.createSourceFile(path, this.toMSE(), {overwrite: true})
+    public generateMseFile(path: string): void {
+        const sF = MSEDocument._project._node.createSourceFile(path, MSEDocument.getFamixRepository().getMSE(), {overwrite: true})
         sF.saveSync()
-    }
-
-    public toMSE(): string {
-        let mse = c.OPEN_TOKEN + "\n"
-        this._fileList.forEach(file => {
-            mse += file.toMSE()
-        })
-        this._elementList.forEach(element => {
-            mse += element.toMSE()
-        })
-        return mse += "\n" + c.CLOSE_TOKEN
-    }
-
-    public showTree(): void {
-        this._fileList.forEach(file => {
-            console.log(file.showTree());
-        })
-    }
-
-    get getNextId(): number {
-        let id = this._idCounter
-        this._idCounter++
-        return id
-    }
-
-    get project(): Project {
-        return this._project
-    }
-
-    get fileList(): FileNode[] {
-        return this._fileList
     }
 
 }

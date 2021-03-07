@@ -1,14 +1,13 @@
-import {SourceFile} from "ts-morph"
-import {File} from "famix/dist/model/file";
+import {Folder} from "famix/dist/model/file";
 import {MSEDocument} from "../MSEDocument";
 import {FamixNode} from "../model/FamixNode";
-import {ClassNode} from "./";
+import {Directory} from "ts-morph";
 
-export class FileNode extends FamixNode<SourceFile, File> {
+export class FolderNode extends FamixNode<Directory, Folder> {
 
-    constructor(sourceFile: SourceFile) {
-        let file = new File(MSEDocument.getFamixRepository())
-        super(sourceFile, file);
+    constructor(d: Directory) {
+        let folder = new Folder(MSEDocument.getFamixRepository())
+        super(d, folder);
         // let startNumber = node.getLineAndColumnAtPos(node.getPos())
         // let endNumber = node.getLineAndColumnAtPos(node.getEnd())
         // super(ctx, node, new Element(ctx.getNextId, "FileAnchor", [
@@ -20,14 +19,11 @@ export class FileNode extends FamixNode<SourceFile, File> {
         // ]))
     }
 
+    getNumberOfLinesOfText() {
+
+    }
+
     execute(): void {
-
-        this.famixElement.setName(this._node.getBaseName())
-        this.famixElement.setNumberOfLinesOfText(this._node.getEndLineNumber() - this._node.getStartLineNumber())
-
-        this._node.getClasses().forEach(node => {
-            this.add(new ClassNode(node))
-        })
 
         // this._node.getFunctions().forEach(node =>{
         //     console.log(node.getText())
@@ -36,8 +32,10 @@ export class FileNode extends FamixNode<SourceFile, File> {
         // this._node.getNamespaces().forEach(node => {
         //     this._element.push(new NamespaceNode(this._ctx, node as NamespaceDeclaration))
         // })
-
-        super.execute()
+        //
+        // this._node.getClasses().forEach(node => {
+        //     this._element.push(new src.ClassNode(node as ts.ClassDeclaration, this._ctx))
+        // })
 
     }
 
