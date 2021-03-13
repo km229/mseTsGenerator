@@ -1,19 +1,24 @@
-// import {MethodDeclaration, Node} from "ts-morph"
-// import {Element} from "../model/FamixElement"
-// import {MSEDocument} from "../MSEDocument"
-// import {FameNode} from "./index"
-//
-//
-// export class MethodNode extends FameNode<MethodDeclaration> {
-//
-//     constructor(node: MethodDeclaration, ctx: MSEDocument) {
-//         super(ctx, node, new Element(ctx.getNextId, "Function", [
-//             ['name', `'${node.getName()}'`],
-//             ["startPos", String(node.getPos())],
-//             ["endPos", String(node.getEnd())],
-//             ["fileName", `'${node.getSourceFile().getFilePath()}'`],
-//         ]))
-//     }
+import {FunctionDeclaration} from "ts-morph"
+import {Function} from "famix/dist/model/famix";
+import {MSEDocument} from "../MSEDocument";
+import {FamixNode} from "../model/FamixNode";
+
+
+export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
+
+    constructor( fonction : FunctionDeclaration) {
+        let famixFunction = new Function(MSEDocument.getFamixRepository())
+        super(fonction, famixFunction);
+    }
+
+
+    execute() : void{
+
+        this.famixElement.setName(this._node.getName())
+        this.add(this.components);
+    }
+}
+
 //
 //     getNewIndexedFileAnchor(ref: number, node: Node): Element {
 //         return new Element(this._ctx.getNextId, "IndexedFileAnchor", [
