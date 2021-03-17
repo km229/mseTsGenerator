@@ -1,7 +1,9 @@
 //Implementation
-//export * from './MethodNode'
-//export * from './ConstructorNode'
+export * from './FunctionNode'
+export * from './ConstructorNode'
 export * from './FileNode'
 export * from './ClassNode'
+export * from './MethodNode'
+export * from './ParameterNode'
 //export * from './ImportNode'
 

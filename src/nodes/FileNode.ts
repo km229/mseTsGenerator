@@ -1,8 +1,9 @@
-import {SourceFile} from "ts-morph"
+import {FunctionTypeNode, SourceFile} from "ts-morph"
 import {File} from "famix/dist/model/file";
 import {MSEDocument} from "../MSEDocument";
 import {FamixNode} from "../model/FamixNode";
 import {ClassNode} from "./";
+import {FunctionNode} from "./";
 
 export class FileNode extends FamixNode<SourceFile, File> {
 
@@ -25,15 +26,14 @@ export class FileNode extends FamixNode<SourceFile, File> {
         this.famixElement.setName(this._node.getBaseName())
         this.famixElement.setNumberOfLinesOfText(this._node.getEndLineNumber() - this._node.getStartLineNumber())
 
-        console.log("test1")
         this._node.getClasses().forEach(node => {
             this.add(new ClassNode(node))
-            console.log("test")
         })
 
         this._node.getFunctions().forEach(node =>{
-             console.log(node.getText())
+            this.add(new FunctionNode(node))
          })
+         
         //
         // this._node.getNamespaces().forEach(node => {
         //     this._element.push(new NamespaceNode(this._ctx, node as NamespaceDeclaration))

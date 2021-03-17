@@ -1,35 +1,39 @@
-//
-// import {Element} from "../model/FamixElement"
-// import {MSEDocument} from "../MSEDocument"
-// import {FameNode} from "./index"
-// import * as ts from "ts-morph"
-//
-// export class ConstructorNode extends FameNode<ts.ConstructorDeclaration> {
-//
-//     constructor(node: ts.ConstructorDeclaration, ctx: MSEDocument) {
-//         super(ctx, node, new Element(ctx.getNextId, "Method", [
-//             ['isConstructor', `true`],
-//         ]))
-//     }
-//
-//     explore(): void {
-//
-//         // Add modifiers
-//         if(this.hasModifiers(this._node)){
-//             this._element.addAttribute('modifiers', this.getModifiers(this._node))
-//         }
-//
-//         let fileAnchor = this.getNewIndexedFileAnchor(this._element.id, this._node)
-//         this._element.addAttribute("sourceAnchor", `(ref: ${fileAnchor.id})`)
-//         this._elementList.push(fileAnchor)
-//
-//         this._node.getParameters().forEach(MethodParam => {
-//             let methodElement = new Element(this._ctx.getNextId, "Parameter",[
-//                 ["name", `'${MethodParam.getText()}'`],
-//                 ["parentBehaviouralEntity", `(ref: ${this._element.id})`],
-//             ])
-//             this._elementList.push(methodElement);
-//         })
-//
-//     }
-// }
+import {ConstructorDeclaration} from "ts-morph"
+import {calculateCyclomaticComplexity} from "ts-complex"
+import {Method} from "famix/dist/model/famix";
+import {MSEDocument} from "../MSEDocument";
+import {FamixNode} from "../model/FamixNode";
+import { ParameterNode } from "./";
+
+export class ConstructorNode extends FamixNode<ConstructorDeclaration, Method> {
+
+        constructor( constructeur : ConstructorDeclaration) {
+            let famixMethod = new Method(MSEDocument.getFamixRepository())
+            super(constructeur, famixMethod);
+        }
+
+        execute():void{
+            //this.famixElement.setName(this._node.getFirstChild().toString()) 
+            this.famixElement.setNumberOfStatements(this._node.getEndLineNumber() - this._node.getStartLineNumber())
+            this.famixElement.setKind('constructor');
+
+            //const parent = this._node.getSourceFile();
+            //const path = parent.getFilePath();
+            //const complexity = calculateCyclomaticComplexity(path);
+            //this.famixElement.setCyclomaticComplexity(complexity); 
+
+            let nbParameter =0;
+            this._node.getParameters().forEach(parameter=>{
+                nbParameter++
+                this.add(new ParameterNode(parameter))
+            })
+            this.famixElement.setNumberOfParameters(nbParameter);
+
+            //this.famixElement.setSignature(this._node.getText())
+        
+            //this.famixElement.setParentType()
+            //this.famixElement.setSourceAnchor()
+
+            super.execute()
+        }
+}

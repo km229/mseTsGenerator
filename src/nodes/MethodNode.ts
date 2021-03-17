@@ -2,6 +2,7 @@ import {MethodDeclaration} from "ts-morph"
 import {Method} from "famix/dist/model/famix";
 import {MSEDocument} from "../MSEDocument";
 import {FamixNode} from "../model/FamixNode";
+import { ParameterNode } from "./";
 
 
 export class MethodNode extends FamixNode<MethodDeclaration, Method> {
@@ -12,30 +13,28 @@ export class MethodNode extends FamixNode<MethodDeclaration, Method> {
     }
 
 
-    execute() : void{
+    execute() : void {
         this.famixElement.setName(this._node.getName())
-        this.add(this.components);
+        this.famixElement.setNumberOfStatements(this._node.getEndLineNumber() - this._node.getStartLineNumber())
+        //this.famixElement.setKind(this._node.getKind().toString())
+
+        //const parent = this._node.getSourceFile();
+        //const path = parent.getFilePath();
+        //const complexity = calculateCyclomaticComplexity(path);
+        //this.famixElement.setCyclomaticComplexity(complexity); 
+
+        let nbParameter =0;
+        this._node.getParameters().forEach(parameter=>{
+            nbParameter++
+            this.add(new ParameterNode(parameter))
+        })
+        if (nbParameter!=0) {this.famixElement.setNumberOfParameters(nbParameter)};
+       
+        //this.search(this._node.getParent().getText(),this._node.getParent().getType().toString())
+
+        //this.famixElement.setParentType()
+        //this.famixElement.setSourceAnchor()
+
+        super.execute()
     }
 }
-//
-//     explore(): void {
-//
-//         // Add modifiers
-//         if(this.hasModifiers(this._node)){
-//             this._element.addAttribute('modifiers', this.getModifiers(this._node))
-//         }
-//
-//         let fileAnchor = this.getNewIndexedFileAnchor(this._element.id, this._node)
-//         this._element.addAttribute("sourceAnchor", `(ref: ${fileAnchor.id})`)
-//         this._elementList.push(fileAnchor)
-//
-//         this._node.getParameters().forEach(MethodParam => {
-//             let methodElement = new Element(this._ctx.getNextId, "Parameter",[
-//                 ["name", `'${MethodParam.getText()}'`],
-//                 ["parentBehaviouralEntity", `(ref: ${this._element.id})`],
-//             ])
-//             this._elementList.push(methodElement);
-//         })
-//
-//     }
-// }

@@ -13,3 +13,7 @@ class Car implements Blah {
         this.Engine = engine;
     }
 }
+
+function drive(speed : number, drive : boolean, direction : string){
+    console.log('The car is driving');
+}
