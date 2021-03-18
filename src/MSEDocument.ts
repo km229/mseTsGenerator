@@ -1,4 +1,4 @@
-import {FamixRepository} from "famix/dist/famix_repository"
+import {FamixRepository} from "./lib/pascalerni/famix_repository";
 import {ProjectNode} from "./ProjectNode"
 
 export class MSEDocument {
@@ -7,9 +7,9 @@ export class MSEDocument {
     private static _project: ProjectNode
 
     constructor(projectPath: string) {
-        MSEDocument._fmx = new FamixRepository()
-        MSEDocument._project = new ProjectNode(projectPath)
-        MSEDocument._project.execute()
+        MSEDocument._fmx = MSEDocument.getFamixRepository()
+        MSEDocument._project = MSEDocument.getProject(projectPath)
+        MSEDocument.getProject().execute()
     }
 
     static getFamixRepository(): FamixRepository {
@@ -19,9 +19,20 @@ export class MSEDocument {
         return MSEDocument._fmx
     }
 
-    public generateMseFile(path: string): void {
-        const sF = MSEDocument._project._node.createSourceFile(path, MSEDocument.getFamixRepository().getMSE(), {overwrite: true})
-        sF.saveSync()
+    static getProject(projectPath?: string) : ProjectNode {
+        if (!MSEDocument._project) {
+            MSEDocument._project = new ProjectNode(projectPath)
+        }
+        return MSEDocument._project
+    }
+
+    generateMseFile(path: string): void {
+        if(MSEDocument.getProject()!==null){
+            const sF = MSEDocument._project.node.createSourceFile(path, MSEDocument.getFamixRepository().getMSE(), {overwrite: true})
+            sF.saveSync()
+        } else {
+            console.log("Aucune instanciation du projet")
+        }
     }
 
 }

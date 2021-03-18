@@ -1,23 +1,22 @@
 import {FunctionDeclaration} from "ts-morph"
-import {Function} from "famix/dist/model/famix";
+import {Function} from "../lib/pascalerni/model/famix"
 import {MSEDocument} from "../MSEDocument";
 import {FamixNode} from "../model/FamixNode";
-import { ParameterNode } from "./";
+import {ParameterNode} from "./";
 
 
 export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
 
     constructor( fonction : FunctionDeclaration) {
-        let famixFunction = new Function(MSEDocument.getFamixRepository())
-        super(fonction, famixFunction);
+        super(fonction, new Function(MSEDocument.getFamixRepository()), fonction.getName(), "Function");
     }
 
 
     execute() : void{
-        this.famixElement.setName(this._node.getName())
-        this.famixElement.setNumberOfStatements(this._node.getEndLineNumber() - this._node.getStartLineNumber())
+        this.famixElement.setName(this.node.getName())
+        this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
         let nbParameter =0;
-        this._node.getParameters().forEach(parameter=>{
+        this.node.getParameters().forEach(parameter=>{
             nbParameter++
             this.add(new ParameterNode(parameter))
         })

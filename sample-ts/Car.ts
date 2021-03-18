@@ -1,6 +1,3 @@
-class testNode extends Node {
-
-}
 
 interface Blah {
 }

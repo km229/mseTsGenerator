@@ -1,35 +1,36 @@
 import {ConstructorDeclaration} from "ts-morph"
-import {calculateCyclomaticComplexity} from "ts-complex"
-import {Method} from "famix/dist/model/famix";
+import {Method} from "../lib/pascalerni/model/famix"
 import {MSEDocument} from "../MSEDocument";
 import {FamixNode} from "../model/FamixNode";
-import { ParameterNode } from "./";
+import {ParameterNode} from "./";
 
 export class ConstructorNode extends FamixNode<ConstructorDeclaration, Method> {
 
         constructor( constructeur : ConstructorDeclaration) {
             let famixMethod = new Method(MSEDocument.getFamixRepository())
-            super(constructeur, famixMethod);
+            super(constructeur, famixMethod, constructeur.getText(), "Constructor");
         }
 
         execute():void{
-            //this.famixElement.setName(this._node.getFirstChild().toString()) 
-            this.famixElement.setNumberOfStatements(this._node.getEndLineNumber() - this._node.getStartLineNumber())
+            //this.famixElement.setName(this.node.getFirstChild().toString())
+            this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
             this.famixElement.setKind('constructor');
 
-            //const parent = this._node.getSourceFile();
+            //const parent = this.node.getSourceFile();
             //const path = parent.getFilePath();
             //const complexity = calculateCyclomaticComplexity(path);
             //this.famixElement.setCyclomaticComplexity(complexity); 
 
             let nbParameter =0;
-            this._node.getParameters().forEach(parameter=>{
+            this.node.getParameters().forEach(parameter=>{
                 nbParameter++
-                this.add(new ParameterNode(parameter))
+                let element = new ParameterNode(parameter)
+                element.parentNode=this
+                this.add(element)
             })
             this.famixElement.setNumberOfParameters(nbParameter);
 
-            //this.famixElement.setSignature(this._node.getText())
+            //this.famixElement.setSignature(this.node.getText())
         
             //this.famixElement.setParentType()
             //this.famixElement.setSourceAnchor()

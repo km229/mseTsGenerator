@@ -1,6 +1,10 @@
 import {Component} from "./Component"
+import {FamixNode} from "./FamixNode";
 
 export abstract class FamixElement<FamixType> implements Component {
+
+    private readonly _famixElement: FamixType
+    private _parentNode: FamixNode<any, any>
 
     protected constructor(fbe: FamixType, name?: string, type?: string) {
         this._famixElement = fbe
@@ -28,18 +32,20 @@ export abstract class FamixElement<FamixType> implements Component {
         this._type = value;
     }
 
-    private _famixElement: FamixType
-
     get famixElement(): FamixType {
         return this._famixElement;
     }
 
-    set famixElement(value: FamixType) {
-        this._famixElement = value;
+    get parentNode(): FamixNode<any, any> {
+        return this._parentNode;
+    }
+
+    set parentNode(value: FamixNode<any, any>) {
+        this._parentNode = value;
     }
 
     abstract execute();
 
-    abstract search(name: string, type: string);
+    abstract search(name: string, type: string): FamixElement<any>;
 
 }

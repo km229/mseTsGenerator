@@ -1,23 +1,21 @@
 import {FamixElement} from "./FamixElement";
-import {Component} from "./Component";
 
 export class FamixNode<NodeType, FamixType> extends FamixElement<FamixType> {
 
-    _node: NodeType
+    private readonly _node: NodeType
+    private _components: FamixElement<any>[]
 
-    constructor(node: NodeType, element: FamixType, name?: string, type?: string) {
+    constructor(node: NodeType, element: FamixType, name: string, type: string) {
         super(element, name, type);
         this._node = node
         this._components = []
     }
 
-    _components: FamixElement<any>[]
-
-    get components(): any {
+    get components(): FamixElement<any>[] {
         return this._components;
     }
 
-    set components(value: any) {
+    set components(value: FamixElement<any>[]) {
         this._components = value;
     }
 
@@ -27,21 +25,30 @@ export class FamixNode<NodeType, FamixType> extends FamixElement<FamixType> {
         })
     }
 
-    search(name: string, type: string) {
-        this._components.forEach(comp => {
-            if (name == comp.name && type == comp.type) {
-                return comp
+    search(name: string, type: string): FamixElement<any> {
+        if(-1!==this.name.indexOf(name) && -1!==this.type.indexOf(type)){
+            return this
+        }
+        let result=null
+        this._components.forEach(e => {
+            let temp = e.search(name, type)
+            if(null != temp){
+                result=temp
             }
-            comp.search(name, type)
         })
+        return result
     }
 
-    add(item: Component) {
+    add(item: FamixElement<any>) {
         this.components.push(item)
     }
 
-    remove(item: Component) {
+    remove(item: FamixElement<any>) {
         this._components.filter(comp => comp != item)
+    }
+
+    get node(): NodeType {
+        return this._node;
     }
 
 }
