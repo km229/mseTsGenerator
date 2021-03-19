@@ -1,7 +1,9 @@
+///<reference path='IWork.ts'/>
+
 module MyNamespace {
     export class Teacher implements IWork {
 
-        public tenure:boolean;
+        public tenure: boolean;
 
         constructor() {
             this.tenure = true;

@@ -19,6 +19,7 @@ export class ProjectNode extends FamixNode<Project, null> {
                 this.add(new FolderNode(file.getDirectory()))
             }
         })
+        this.add(new PrimitiveElement('number'))
         this.add(new PrimitiveElement('string'))
         this.add(new PrimitiveElement('boolean'))
         super.execute()

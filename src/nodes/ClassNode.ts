@@ -38,16 +38,24 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
         })
 
         let extend
-        this.node.getExtends() != undefined ? extend = this.node.getExtends().getText() : extend=undefined
+        this.node.getExtends() != undefined ? extend = this.node.getExtends().getText() : extend = undefined
 
         let searched = MSEDocument.getProject().search(extend, `${extend}#Class`) as FamixNode<ClassDeclaration, Class>
-        if(undefined !== extend){
-            if(searched){
+        if (undefined !== extend) {
+            if (searched) {
                 this.add(new InheritanceElement(this, searched))
             } else {
-                //Search class not added
+                //TODO - Search class not added
             }
         }
+
+        this.node.getImplements().forEach(implement => {
+            this.famixElement.setIsInterface(true)
+            //TODO - Interface
+            // let interface = new InterfaceNode(node)
+            // interface.parentNode=this
+            // this.add(interface)
+        })
 
         super.execute()
 

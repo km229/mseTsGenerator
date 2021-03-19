@@ -12,20 +12,20 @@ export class ConstructorNode extends FamixNode<ConstructorDeclaration, Method> {
         }
 
         execute():void{
-            //this.famixElement.setName(this.node.getFirstChild().toString())
-            this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
+            this.famixElement.setName(this.parentNode.type + ".constructor")
+            //this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
             this.famixElement.setKind('constructor');
 
             //const parent = this.node.getSourceFile();
             //const path = parent.getFilePath();
-            //const complexity = calculateCyclomaticComplexity(path);
-            //this.famixElement.setCyclomaticComplexity(complexity); 
+            let complexity = MSEDocument.getMetricService().getCyclomaticComplexity(this.node);
+            this.famixElement.setCyclomaticComplexity(complexity);
 
-            let nbParameter =0;
-            this.node.getParameters().forEach(parameter=>{
+            let nbParameter = 0;
+            this.node.getParameters().forEach(parameter => {
                 nbParameter++
                 let element = new ParameterNode(parameter)
-                element.parentNode=this
+                element.parentNode = this
                 this.add(element)
             })
             this.famixElement.setNumberOfParameters(nbParameter);

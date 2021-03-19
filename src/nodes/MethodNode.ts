@@ -3,6 +3,7 @@ import {Method} from "../lib/pascalerni/model/famix"
 import {MSEDocument} from "../MSEDocument";
 import {FamixNode} from "../model/FamixNode";
 import {ParameterNode} from "./ParameterNode";
+import {IndexedFileAnchorElement} from "../elements/IndexedFileAnchorElement";
 
 export class MethodNode extends FamixNode<MethodDeclaration, Method> {
 
@@ -16,26 +17,29 @@ export class MethodNode extends FamixNode<MethodDeclaration, Method> {
 
         //Nombre de paramètres dans la méthode
         let nbParameter =0;
-        this.node.getParameters().forEach(parameter=>{
+        this.node.getParameters().forEach(parameter=> {
             nbParameter++
-            this.add(new ParameterNode(parameter))
+            let element = new ParameterNode(parameter)
+            element.parentNode = this
+            this.add(element)
         })
         this.famixElement.setNumberOfParameters(nbParameter);
 
-        //this.famixElement.setCyclomaticComplexity(complex.calculateCyclomaticComplexity(this.node.getText()))
         //this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
         //this.famixElement.setKind(this._node.getKind().toString())
 
-        //const parent = this._node.getSourceFile();
-        //const path = parent.getFilePath();
-        //const complexity = calculateCyclomaticComplexity(path);
-        //this.famixElement.setCyclomaticComplexity(complexity);
+        let complexity = MSEDocument.getMetricService().getCyclomaticComplexity(this.node);
+        this.famixElement.setCyclomaticComplexity(complexity);
 
-        //this.search(this._node.getParent().getText(),this._node.getParent().getType().toString())
 
-        //this.famixElement.setParentType()
-        //this.famixElement.setSourceAnchor()
+        this.famixElement.setParentType(this.parentNode.famixElement)
+
+        let index = new IndexedFileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement, this.node.getPos(), this.node.getEnd())
+        index.execute()
+        this.famixElement.setSourceAnchor(index.famixElement)
 
         super.execute()
     }
+
+
 }
