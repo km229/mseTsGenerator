@@ -11,7 +11,6 @@ export class MethodNode extends FamixNode<MethodDeclaration, Method> {
         super(methode, new Method(MSEDocument.getFamixRepository()), methode.getName(), 'Method');
     }
 
-
     execute() : void {
         this.famixElement.setName(this.node.getName())
 
@@ -39,6 +38,4 @@ export class MethodNode extends FamixNode<MethodDeclaration, Method> {
 
         super.execute()
     }
-
-
 }

@@ -41,5 +41,4 @@ export class MSEDocument {
             console.log("Aucune instanciation du projet")
         }
     }
-
 }

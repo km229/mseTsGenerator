@@ -7,4 +7,3 @@ export * from './MethodNode'
 export * from './ParameterNode'
 export * from './AttributeNode'
 //export * from './ImportNode'
-

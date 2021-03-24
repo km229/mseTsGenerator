@@ -58,8 +58,5 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
         })
 
         super.execute()
-
     }
-
 }
-
