@@ -1,6 +1,7 @@
 ///<reference path='Animal.ts'/>
 
 module MyNamespace {
+
     export class Cat extends Animal {
 
         public family:string;

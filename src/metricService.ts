@@ -1,3 +1,9 @@
+/*
+Sous licence MIT
+ https://github.com/anandundavia/ts-complex
+ https://www.npmjs.com/package/ts-complex
+ */
+
 import {SyntaxKind} from 'ts-morph';
 import {isFunctionWithBody} from 'tsutils';
 import {createSourceFile, forEachChild, ScriptTarget} from 'typescript';

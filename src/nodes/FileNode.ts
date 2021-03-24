@@ -27,11 +27,8 @@ export class FileNode extends FamixNode<SourceFile, File> {
         // this._node.getNamespaces().forEach(node => {
         //     this._element.push(new NamespaceNode(this._ctx, node as NamespaceDeclaration))
         // })
-
-    }
-
-    findAll(): void {
         super.execute()
+
     }
 
 }

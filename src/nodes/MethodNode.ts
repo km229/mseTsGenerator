@@ -31,7 +31,6 @@ export class MethodNode extends FamixNode<MethodDeclaration, Method> {
         let complexity = MSEDocument.getMetricService().getCyclomaticComplexity(this.node);
         this.famixElement.setCyclomaticComplexity(complexity);
 
-
         this.famixElement.setParentType(this.parentNode.famixElement)
 
         let index = new IndexedFileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement, this.node.getPos(), this.node.getEnd())
