@@ -1,69 +1,44 @@
-import {Project} from "ts-morph"
-import * as c from '../constants'
-import {FileNode} from './nodes'
-import {Element} from "./model/Element"
+import {FamixRepository} from "./lib/pascalerni/famix_repository";
+import {ProjectNode} from "./ProjectNode"
+import {MetricService} from "./metricService";
 
 export class MSEDocument {
-    private _project: Project
-    private _fileList: FileNode[]
-    private _elementList: Element[]
-    private _idCounter: number
+
+    private static _fmx: FamixRepository
+    private static _project: ProjectNode
+    private static _metricService: MetricService
 
     constructor(projectPath: string) {
-        this._project = new Project()
-        this._project.addSourceFilesAtPaths(projectPath + "/**/*{.d.ts,.ts}")
-        this._fileList = []
-        this._elementList = []
-        this._idCounter = 1
+        MSEDocument._fmx = MSEDocument.getFamixRepository()
+        MSEDocument._project = MSEDocument.getProject(projectPath)
+        MSEDocument._metricService = MetricService.getMetricService()
+        MSEDocument.getProject().execute()
     }
 
-    public explore(): void {
-        this._project.getSourceFiles().forEach(sourceFile => {
-            this._fileList.push(new FileNode(this, sourceFile))
-        })
+    static getFamixRepository(): FamixRepository {
+        if (!MSEDocument._fmx) {
+            MSEDocument._fmx = new FamixRepository()
+        }
+        return MSEDocument._fmx
     }
 
-    //TODO?
-    /*public findByName(name: string): any {
+    static getProject(projectPath?: string): ProjectNode {
+        if (!MSEDocument._project) {
+            MSEDocument._project = new ProjectNode(projectPath)
+        }
+        return MSEDocument._project
     }
 
-    public findById(id: number): any {
-    }*/
-
-    public generateFile(path: string): void {
-        const sF = this._project.createSourceFile(path, this.toMSE(), {overwrite: true})
-        sF.saveSync()
+    static getMetricService(): MetricService {
+        return MSEDocument._metricService
     }
 
-    public toMSE(): string {
-        let mse = c.OPEN_TOKEN + "\n"
-        this._fileList.forEach(file => {
-            mse += file.toMSE()
-        })
-        this._elementList.forEach(element => {
-            mse += element.toMSE()
-        })
-        return mse += "\n" + c.CLOSE_TOKEN
+    generateMseFile(path: string): void {
+        if (MSEDocument.getProject() !== null) {
+            const sF = MSEDocument._project.node.createSourceFile(path, MSEDocument.getFamixRepository().getMSE(), {overwrite: true})
+            sF.saveSync()
+        } else {
+            console.log("Aucune instanciation du projet")
+        }
     }
-
-    public showTree(): void {
-        this._fileList.forEach(file => {
-            console.log(file.showTree());
-        })
-    }
-
-    get getNextId(): number {
-        let id = this._idCounter
-        this._idCounter++
-        return id
-    }
-
-    get project(): Project {
-        return this._project
-    }
-
-    get fileList(): FileNode[] {
-        return this._fileList
-    }
-
 }

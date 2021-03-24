@@ -1,7 +1,5 @@
 
 import {MSEDocument} from './src/MSEDocument'
 
-let mseDocument = new MSEDocument('./sample-ts')
-mseDocument.explore()
-mseDocument.generateFile('./result.mse')
-//seDocument.showTree()
+let mse = new MSEDocument('./sample-ts')
+mse.generateMseFile('./result.mse')

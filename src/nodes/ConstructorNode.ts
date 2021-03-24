@@ -1,35 +1,40 @@
+import {ConstructorDeclaration} from "ts-morph"
+import {Method} from "../lib/pascalerni/model/famix"
+import {MSEDocument} from "../MSEDocument";
+import {FamixNode} from "../model/FamixNode";
+import {ParameterNode} from "./";
 
-import {Element} from "../model/Element"
-import {MSEDocument} from "../MSEDocument"
-import {FameNode} from "./index"
-import * as ts from "ts-morph"
+export class ConstructorNode extends FamixNode<ConstructorDeclaration, Method> {
 
-export class ConstructorNode extends FameNode<ts.ConstructorDeclaration> {
-
-    constructor(node: ts.ConstructorDeclaration, ctx: MSEDocument) {
-        super(ctx, node, new Element(ctx.getNextId, "Method", [
-            ['isConstructor', `true`],
-        ]))
-    }
-
-    explore(): void {
-
-        // Add modifiers
-        if(this.hasModifiers(this._node)){
-            this._element.addAttribute('modifiers', this.getModifiers(this._node))
+        constructor( constructeur : ConstructorDeclaration) {
+            let famixMethod = new Method(MSEDocument.getFamixRepository())
+            super(constructeur, famixMethod, constructeur.getText(), "Constructor");
         }
 
-        let fileAnchor = this.getNewIndexedFileAnchor(this._element.id, this._node)
-        this._element.addAttribute("sourceAnchor", `(ref: ${fileAnchor.id})`)
-        this._elementList.push(fileAnchor)
+        execute():void{
+            this.famixElement.setName(this.parentNode.type + ".constructor")
+            //this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
+            this.famixElement.setKind('constructor');
 
-        this._node.getParameters().forEach(MethodParam => {
-            let methodElement = new Element(this._ctx.getNextId, "Parameter",[
-                ["name", `'${MethodParam.getText()}'`],
-                ["parentBehaviouralEntity", `(ref: ${this._element.id})`],
-            ])
-            this._elementList.push(methodElement);
-        })
+            //const parent = this.node.getSourceFile();
+            //const path = parent.getFilePath();
+            let complexity = MSEDocument.getMetricService().getCyclomaticComplexity(this.node);
+            this.famixElement.setCyclomaticComplexity(complexity);
 
-    }
+            let nbParameter = 0;
+            this.node.getParameters().forEach(parameter => {
+                nbParameter++
+                let element = new ParameterNode(parameter)
+                element.parentNode = this
+                this.add(element)
+            })
+            this.famixElement.setNumberOfParameters(nbParameter);
+
+            //this.famixElement.setSignature(this.node.getText())
+        
+            //this.famixElement.setParentType()
+            //this.famixElement.setSourceAnchor()
+
+            super.execute()
+        }
 }

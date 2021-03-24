@@ -1,5 +1,5 @@
-class testNode extends Node {
 
+interface Blah {
 }
 
 class Car implements Blah {
@@ -9,4 +9,7 @@ class Car implements Blah {
     constructor(engine: string) {
         this.Engine = engine;
     }
+  
+function drive(speed : number, drive : boolean, direction : string){
+    console.log('The car is driving');
 }

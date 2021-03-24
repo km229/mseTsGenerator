@@ -1,49 +1,34 @@
-import {MethodDeclaration, Node} from "ts-morph"
-import {Element} from "../model/Element"
-import {MSEDocument} from "../MSEDocument"
-import {FameNode} from "./index"
+import {FunctionDeclaration} from "ts-morph"
+import {Function} from "../lib/pascalerni/model/famix"
+import {MSEDocument} from "../MSEDocument";
+import {FamixNode} from "../model/FamixNode";
+import {ParameterNode} from "./";
 
+export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
 
-export class MethodNode extends FameNode<MethodDeclaration> {
-
-    constructor(node: MethodDeclaration, ctx: MSEDocument) {
-        super(ctx, node, new Element(ctx.getNextId, "Function", [
-            ['name', `'${node.getName()}'`],
-            ["startPos", String(node.getPos())],
-            ["endPos", String(node.getEnd())],
-            ["fileName", `'${node.getSourceFile().getFilePath()}'`],
-        ]))
+    constructor( fonction : FunctionDeclaration) {
+        super(fonction, new Function(MSEDocument.getFamixRepository()), fonction.getName(), "Function");
     }
 
-    getNewIndexedFileAnchor(ref: number, node: Node): Element {
-        return new Element(this._ctx.getNextId, "IndexedFileAnchor", [
-            ["element", `(ref: ${ref})`],
-            ["startPos", String(node.getPos())],
-            ["endPos", String(node.getEnd())],
-            ["fileName", `'${node.getSourceFile().getFilePath()}'`],
-        ])
-    };
 
-    explore(): void {
-
-        // Add modifiers
-        if (this.hasModifiers(this._node)) {
-            this._element.addAttribute('modifiers', this.getModifiers(this._node))
-        }
-
-        let fileAnchor = this.getNewIndexedFileAnchor(this._element.id, this._node)
-        this._element.addAttribute("sourceAnchor", `(ref: ${fileAnchor.id})`)
-        this._elementList.push(fileAnchor)
-
-        this._node.forEachChild(MethodParam => {
-            let methodElement = new Element(this._ctx.getNextId, MethodParam.getKindName(), [
-                ["name", `'${MethodParam.getText()}'`],
-                ["parentType", `(ref: ${this._element.id})`],
-                ["startPos", String(MethodParam.getPos())],
-                ["endPos", String(MethodParam.getEnd())],
-            ])
-            this._elementList.push(methodElement);
+    execute() : void{
+        this.famixElement.setName(this.node.getName())
+        //this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
+        let nbParameter = 0;
+        this.node.getParameters().forEach(parameter => {
+            nbParameter++
+            let element = new ParameterNode(parameter)
+            element.parentNode = this
+            this.add(element)
         })
+        if (nbParameter != 0) {
+            this.famixElement.setNumberOfParameters(nbParameter)
+        }
+        ;
 
+        let complexity = MSEDocument.getMetricService().getCyclomaticComplexity(this.node);
+        this.famixElement.setCyclomaticComplexity(complexity);
+
+        super.execute()
     }
 }

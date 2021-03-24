@@ -1,35 +1,41 @@
 import {MethodDeclaration} from "ts-morph"
-import {Element} from "../model/Element"
-import {MSEDocument} from "../MSEDocument"
-import {FameNode} from "./index"
+import {Method} from "../lib/pascalerni/model/famix"
+import {MSEDocument} from "../MSEDocument";
+import {FamixNode} from "../model/FamixNode";
+import {ParameterNode} from "./ParameterNode";
+import {IndexedFileAnchorElement} from "../elements/IndexedFileAnchorElement";
 
+export class MethodNode extends FamixNode<MethodDeclaration, Method> {
 
-export class MethodNode extends FameNode<MethodDeclaration> {
-
-    constructor(node: MethodDeclaration, ctx: MSEDocument) {
-        super(ctx, node, new Element(ctx.getNextId, "Method", [
-            ['name', `'${node.getName()}'`],
-        ]))
+    constructor(methode : MethodDeclaration) {
+        super(methode, new Method(MSEDocument.getFamixRepository()), methode.getName(), 'Method');
     }
 
-    explore(): void {
+    execute() : void {
+        this.famixElement.setName(this.node.getName())
 
-        // Add modifiers
-        if(this.hasModifiers(this._node)){
-            this._element.addAttribute('modifiers', this.getModifiers(this._node))
-        }
-
-        let fileAnchor = this.getNewIndexedFileAnchor(this._element.id, this._node)
-        this._element.addAttribute("sourceAnchor", `(ref: ${fileAnchor.id})`)
-        this._elementList.push(fileAnchor)
-
-        this._node.getParameters().forEach(MethodParam => {
-            let methodElement = new Element(this._ctx.getNextId, "Parameter",[
-                ["name", `'${MethodParam.getText()}'`],
-                ["parentBehaviouralEntity", `(ref: ${this._element.id})`],
-            ]) 
-            this._elementList.push(methodElement);        
+        //Nombre de paramètres dans la méthode
+        let nbParameter =0;
+        this.node.getParameters().forEach(parameter=> {
+            nbParameter++
+            let element = new ParameterNode(parameter)
+            element.parentNode = this
+            this.add(element)
         })
-        
+        this.famixElement.setNumberOfParameters(nbParameter);
+
+        //this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
+        //this.famixElement.setKind(this._node.getKind().toString())
+
+        let complexity = MSEDocument.getMetricService().getCyclomaticComplexity(this.node);
+        this.famixElement.setCyclomaticComplexity(complexity);
+
+        this.famixElement.setParentType(this.parentNode.famixElement)
+
+        let index = new IndexedFileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement, this.node.getPos(), this.node.getEnd())
+        index.execute()
+        this.famixElement.setSourceAnchor(index.famixElement)
+
+        super.execute()
     }
 }
