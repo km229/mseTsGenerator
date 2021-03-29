@@ -2,7 +2,7 @@ import {PropertyDeclaration} from "ts-morph"
 import {Attribute} from "../lib/pascalerni/model/famix"
 import {MSEDocument} from "../MSEDocument";
 import {FamixNode} from "../model/FamixNode";
-import {IndexedFileAnchorElement} from "../elements/IndexedFileAnchorElement";
+import {FileAnchorElement} from "../elements/FileAnchorElement";
 
 export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
 
@@ -36,7 +36,9 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
 
         this.famixElement.setParentType(this.parentNode.famixElement)
 
-        let index = new IndexedFileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement, this.node.getPos(), this.node.getEnd())
+        let startNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getPos())
+        let endNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getEnd())
+        let index = new FileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement,startNumber.line,endNumber.line,startNumber.column,endNumber.column)
         index.execute()
         this.famixElement.setSourceAnchor(index.famixElement)
 
