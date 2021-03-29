@@ -1,24 +1,28 @@
-// import {Element} from "../model/FamixElement"
-// import {MSEDocument} from "../MSEDocument"
-// import * as ts from "ts-morph"
-// import {NamespaceDeclaration} from "ts-morph"
-// import * as src from "./index"
-//
-// export class NamespaceNode extends src.FameNode<ts.NamespaceDeclaration> {
-//
-//     _namespaceId: string
-//     _isExported: boolean
-//
-//     constructor(ctx: MSEDocument, node: NamespaceDeclaration) {
-//         super(ctx, node, new Element(ctx.getNextId, "Namespace", [
-//             ["name", `'node.getName()'`]
-//         ]))
-//         this._namespaceId = node.getName()
-//     }
-//
-//     explore(): void {
-//
-//     }
-//
-// }
-//
+import {NamespaceDeclaration} from "ts-morph"
+import {Namespace} from "../lib/pascalerni/model/famix"
+import {MSEDocument} from "../MSEDocument"
+import {FamixNode} from "../model/FamixNode";
+
+const KIND_ATTRIBUTE_NUMBER = 232
+
+export class NamespaceNode extends FamixNode<NamespaceDeclaration, Namespace> {
+
+
+    constructor(namespace: NamespaceDeclaration) {
+        super(namespace, new Namespace(MSEDocument.getFamixRepository()), namespace.getName(), "Namespace")
+    }
+
+      execute(): void {
+        let nbAttributes = 0
+        this.node.getStatements().forEach(statement => {
+            if(statement.getKind() == KIND_ATTRIBUTE_NUMBER) {
+                nbAttributes++
+            }
+        })
+        this.famixElement.setName(this.node.getName())
+        this.famixElement.setNumberOfAttributes(nbAttributes)
+        super.execute()
+    }
+
+}
+

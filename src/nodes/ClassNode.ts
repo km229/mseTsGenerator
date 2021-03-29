@@ -31,6 +31,7 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
             attrElement.parentNode=this
             this.add(attrElement)
         })
+        
         this.node.getConstructors().forEach(node => {
             let attrElement = new ConstructorNode(node)
             attrElement.parentNode=this

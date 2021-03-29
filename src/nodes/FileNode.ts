@@ -3,6 +3,7 @@ import {File} from "../lib/pascalerni/model/file"
 import {MSEDocument} from "../MSEDocument";
 import {FamixNode} from "../model/FamixNode";
 import {ClassNode, FunctionNode} from "./";
+import {NamespaceNode} from "./NamespaceNode"
 
 export class FileNode extends FamixNode<SourceFile, File> {
 
@@ -23,10 +24,10 @@ export class FileNode extends FamixNode<SourceFile, File> {
             this.add(new FunctionNode(node))
         })
 
-        //
-        // this._node.getNamespaces().forEach(node => {
-        //     this._element.push(new NamespaceNode(this._ctx, node as NamespaceDeclaration))
-        // })
+        this.node.getNamespaces().forEach(node => {
+            this.add(new NamespaceNode (node))
+         })
+
         super.execute()
     }
 
