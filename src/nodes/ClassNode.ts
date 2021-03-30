@@ -1,40 +1,33 @@
+import * as type from "../types"
 import {ClassDeclaration} from "ts-morph"
-import {Class} from "../lib/pascalerni/model/famix"
-import {MSEDocument} from "../MSEDocument"
+import {Class} from "../../lib/pascalerni/model/famix"
+import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"
-import {AttributeNode} from "./AttributeNode"
-import {ContainerNode} from "../elements/ContainerNode";
-import {InheritanceElement} from "../elements/InheritanceElement";
-import {ConstructorNode, MethodNode} from "./";
+import {AttributeNode, ConstructorNode, MethodNode} from "../nodes"
+import {ContainerNode, InheritanceElement} from "../elements"
 
 export class ClassNode extends FamixNode<ClassDeclaration, Class> {
 
     constructor(element: ClassDeclaration) {
-        super(element, new Class(MSEDocument.getFamixRepository()), element.getSourceFile().getFilePath()+"#"+element.getName(), element.getName()+"#Class");
-        let container = new ContainerNode(element.getName(), this.node)
-        container.execute()
-        this.famixElement.setContainer(container.famixElement)
+        super(element, new Class(MSEDocument.getFamixRepository()), element.getSourceFile().getFilePath() + "#" + element.getName(), type.CLASS);
     }
 
-    execute(): void {
-
-        this.famixElement.setName(this.node.getName())
-
+    findNodes() {
         this.node.getProperties().forEach(attribute => {
             let attrElement = new AttributeNode(attribute)
-            attrElement.parentNode=this
-            this.add(attrElement)
+            attrElement.parentNode = this
+            this.addNode(attrElement)
         })
 
         this.node.getMethods().forEach(node => {
             let attrElement = new MethodNode(node)
-            attrElement.parentNode=this
-            this.add(attrElement)
+            attrElement.parentNode = this
+            this.addNode(attrElement)
         })
         this.node.getConstructors().forEach(node => {
             let attrElement = new ConstructorNode(node)
-            attrElement.parentNode=this
-            this.add(attrElement)
+            attrElement.parentNode = this
+            this.addNode(attrElement)
         })
 
         let extend
@@ -43,7 +36,7 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
         let searched = MSEDocument.getProject().search(extend, `${extend}#Class`) as FamixNode<ClassDeclaration, Class>
         if (undefined !== extend) {
             if (searched) {
-                this.add(new InheritanceElement(this, searched))
+                this.addNode(new InheritanceElement(this, searched))
             } else {
                 //TODO - Search class not added
             }
@@ -56,6 +49,16 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
             // interface.parentNode=this
             // this.add(interface)
         })
+
+    }
+
+    execute(): void {
+
+        this.famixElement.setName(this.node.getName())
+
+        let container = new ContainerNode(this.node.getName(), this.node)
+        container.execute()
+        this.famixElement.setContainer(container.famixElement)
 
         super.execute()
     }

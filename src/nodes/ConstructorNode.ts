@@ -1,32 +1,36 @@
 import {ConstructorDeclaration} from "ts-morph"
-import {Method} from "../lib/pascalerni/model/famix"
-import {MSEDocument} from "../MSEDocument";
+import {Method} from "../../lib/pascalerni/model/famix"
+import {MSEDocument} from "../model/MSEDocument";
 import {FamixNode} from "../model/FamixNode";
 import {ParameterNode} from "./";
 
 export class ConstructorNode extends FamixNode<ConstructorDeclaration, Method> {
 
-        constructor( constructeur : ConstructorDeclaration) {
-            let famixMethod = new Method(MSEDocument.getFamixRepository())
-            super(constructeur, famixMethod, constructeur.getText(), "Constructor");
-        }
+    constructor(constructeur: ConstructorDeclaration) {
+        let famixMethod = new Method(MSEDocument.getFamixRepository())
+        super(constructeur, famixMethod, constructeur.getText(), "Constructor");
+    }
 
-        execute():void{
-            this.famixElement.setName(this.parentNode.type + ".constructor")
-            //this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
-            this.famixElement.setKind('constructor');
+    findNodes() {
+    }
 
-            //const parent = this.node.getSourceFile();
-            //const path = parent.getFilePath();
-            let complexity = MSEDocument.getMetricService().getCyclomaticComplexity(this.node);
-            this.famixElement.setCyclomaticComplexity(complexity);
+    execute(): void {
+        //TODO - Correct type problem
+        //this.famixElement.setName(this.parentNode.type + ".constructor")
+        //this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
+        this.famixElement.setKind('constructor');
 
-            let nbParameter = 0;
-            this.node.getParameters().forEach(parameter => {
+        //const parent = this.node.getSourceFile();
+        //const path = parent.getFilePath();
+        let complexity = MSEDocument.getMetricService().getCyclomaticComplexity(this.node);
+        this.famixElement.setCyclomaticComplexity(complexity);
+
+        let nbParameter = 0;
+        this.node.getParameters().forEach(parameter => {
                 nbParameter++
                 let element = new ParameterNode(parameter)
-                element.parentNode = this
-                this.add(element)
+            element.parentNode = this
+            this.addNode(element)
             })
             this.famixElement.setNumberOfParameters(nbParameter);
 

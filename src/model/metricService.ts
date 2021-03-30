@@ -1,5 +1,6 @@
 /*
 Sous licence MIT
+ ./lib/ts-complex
  https://github.com/anandundavia/ts-complex
  https://www.npmjs.com/package/ts-complex
  */

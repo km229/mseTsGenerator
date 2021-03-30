@@ -1,6 +1,6 @@
-import {FamixRepository} from "./lib/pascalerni/famix_repository";
-import {ProjectNode} from "./ProjectNode"
-import {MetricService} from "./metricService";
+import {FamixRepository} from "../../lib/pascalerni/famix_repository"
+import {ProjectNode} from "../nodes/ProjectNode"
+import {MetricService} from "./metricService"
 
 export class MSEDocument {
 
@@ -12,6 +12,7 @@ export class MSEDocument {
         MSEDocument._fmx = MSEDocument.getFamixRepository()
         MSEDocument._project = MSEDocument.getProject(projectPath)
         MSEDocument._metricService = MetricService.getMetricService()
+        MSEDocument.getProject().findNodes()
         MSEDocument.getProject().execute()
     }
 

@@ -1,26 +1,29 @@
 import {MethodDeclaration} from "ts-morph"
-import {Method} from "../lib/pascalerni/model/famix"
-import {MSEDocument} from "../MSEDocument";
+import {Method} from "../../lib/pascalerni/model/famix"
+import {MSEDocument} from "../model/MSEDocument";
 import {FamixNode} from "../model/FamixNode";
 import {ParameterNode} from "./ParameterNode";
 import {IndexedFileAnchorElement} from "../elements/IndexedFileAnchorElement";
 
 export class MethodNode extends FamixNode<MethodDeclaration, Method> {
 
-    constructor(methode : MethodDeclaration) {
+    constructor(methode: MethodDeclaration) {
         super(methode, new Method(MSEDocument.getFamixRepository()), methode.getName(), 'Method');
     }
 
-    execute() : void {
+    findNodes() {
+    }
+
+    execute(): void {
         this.famixElement.setName(this.node.getName())
 
         //Nombre de paramètres dans la méthode
-        let nbParameter =0;
-        this.node.getParameters().forEach(parameter=> {
+        let nbParameter = 0;
+        this.node.getParameters().forEach(parameter => {
             nbParameter++
             let element = new ParameterNode(parameter)
             element.parentNode = this
-            this.add(element)
+            this.addNode(element)
         })
         this.famixElement.setNumberOfParameters(nbParameter);
 
