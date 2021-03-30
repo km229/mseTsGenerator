@@ -3,7 +3,8 @@ import {Method} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument";
 import {FamixNode} from "../model/FamixNode";
 import {ParameterNode} from "./ParameterNode";
-import {IndexedFileAnchorElement} from "../elements/IndexedFileAnchorElement";
+import {FileAnchorElement} from "../elements/FileAnchorElement";
+import { AccessElement } from "../elements/AccessElement";
 
 export class MethodNode extends FamixNode<MethodDeclaration, Method> {
 
@@ -35,9 +36,14 @@ export class MethodNode extends FamixNode<MethodDeclaration, Method> {
 
         this.famixElement.setParentType(this.parentNode.famixElement)
 
-        let index = new IndexedFileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement, this.node.getPos(), this.node.getEnd())
+        let startNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getPos())
+        let endNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getEnd())
+        let index = new FileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement,startNumber.line,endNumber.line,startNumber.column,endNumber.column)
         index.execute()
         this.famixElement.setSourceAnchor(index.famixElement)
+
+        let acces = new AccessElement(this.node.getSourceFile().getFilePath(),this.famixElement)
+            acces.execute()
 
         super.execute()
     }

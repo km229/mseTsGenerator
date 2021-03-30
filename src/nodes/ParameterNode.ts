@@ -1,20 +1,13 @@
-import * as type from "../types"
 import {ParameterDeclaration} from "ts-morph"
 import {Parameter} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"
-import {IndexedFileAnchorElement} from "../elements"
+import {FileAnchorElement} from "../elements/FileAnchorElement";
 
 export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
 
     constructor(parametre: ParameterDeclaration) {
         super(parametre, new Parameter(MSEDocument.getFamixRepository()), parametre.getName(), type.PARAMETER);
-    }
-
-    findNodes() {
-        let index = new IndexedFileAnchorElement(this.id, this.famixElement, this.node.getPos(), this.node.getEnd())
-        index.execute()
-        this.famixElement.setSourceAnchor(index.famixElement)
     }
 
     execute(): void {
@@ -23,6 +16,12 @@ export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
         // Define declaredType
         // TODO - Correct
         //this.setDeclaredType()
+
+        let startNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getPos())
+        let endNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getEnd())
+        let index = new FileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement,startNumber.line,endNumber.line,startNumber.column,endNumber.column)
+        index.execute()
+        this.famixElement.setSourceAnchor(index.famixElement)
 
         this.famixElement.setParentBehaviouralEntity(this.parentNode.famixElement)
     }

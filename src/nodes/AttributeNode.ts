@@ -3,7 +3,7 @@ import {PropertyDeclaration} from "ts-morph"
 import {Attribute} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"
-import {IndexedFileAnchorElement} from "../elements"
+import {FileAnchorElement} from "../elements/FileAnchorElement";
 
 export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
 
@@ -13,7 +13,9 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
     }
 
     findNodes() {
-        let index = new IndexedFileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement, this.node.getPos(), this.node.getEnd())
+        let startNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getPos())
+        let endNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getEnd())
+        let index = new FileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement,startNumber.line,endNumber.line,startNumber.column,endNumber.column)
         index.execute()
         this.famixElement.setSourceAnchor(index.famixElement)
     }
@@ -30,7 +32,7 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
         this.famixElement.setParentType(this.parentNode.famixElement)
 
         this.node.getModifiers().forEach(modifier => {
-            if (modifier.getText() == 'static') {
+            if(modifier.getText() == 'static'){
                 this.famixElement.setHasClassScope(true)
             }
         })
@@ -54,6 +56,5 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
             }
         }
     }
-
 }
 
