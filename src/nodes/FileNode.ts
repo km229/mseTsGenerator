@@ -28,15 +28,10 @@ export class FileNode extends FamixNode<SourceFile, File> {
         })
         //TODO - Search imports
         //this.getImports(this.node.getImportDeclarations())
-
-        this.node.getNamespaces().forEach(node => {
-            this.add(new NamespaceNode (node))
-         })
-
         //Search namespaces
-        // this._node.getNamespaces().forEach(node => {
-        //     this._element.push(new NamespaceNode(this._ctx, node as NamespaceDeclaration))
-        // })
+        this.node.getNamespaces().forEach(node => {
+            this.addNode(new NamespaceNode(node))
+         })
         //Search in descendants
         super.findNodes();
     }
@@ -54,11 +49,8 @@ export class FileNode extends FamixNode<SourceFile, File> {
     }
 
     execute(): void {
-
         this.famixElement.setName(this.node.getBaseName())
-
         super.execute()
     }
-
 }
 

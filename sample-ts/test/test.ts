@@ -1,6 +1,6 @@
+import time from './time'
 
 namespace TestSpace {
-    import time from './time';
 
     var TEST = "cc"
     const TEST2 = "cc2"
@@ -49,23 +49,23 @@ namespace TestSpace {
         }
     }
 
-    function isPrime(n: number): boolean {
-        let prime = true;
-        let i = 2;
-        while (i < n) {
-            if (n % i == 0) {
-                prime = false;
-            }
-            i++;
-        }
-        return prime;
-    }
-
-    function printMinutesAndSecondes(min: number, sec: number): void {
+    export function printMinutesAndSecondes(min: number, sec: number): void {
         let val = new premier(min, sec)
         console.log(val.print())
     }
 
+}
+
+function isPrime(n: number): boolean {
+    let prime = true;
+    let i = 2;
+    while (i < n) {
+        if (n % i == 0) {
+            prime = false;
+        }
+        i++;
+    }
+    return prime;
 }
 
 TestSpace.printMinutesAndSecondes(2, 90)

@@ -11,6 +11,7 @@ export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
 
     constructor(fonction: FunctionDeclaration) {
         super(fonction, new Function(MSEDocument.getFamixRepository()), fonction.getName(), type.FUNCTION)
+        FunctionNode.components.push(this)
         this.nbParameter = 0
     }
 

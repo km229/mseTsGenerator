@@ -1,3 +1,4 @@
+import * as type from '../types'
 import {ParameterDeclaration} from "ts-morph"
 import {Parameter} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
@@ -27,7 +28,7 @@ export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
     }
 
     // TODO - Change
-    setDeclaredType(): void {
+    setDeclaredTypeFamix(): void {
         if (!this.node.getType().isAny()) {
             // Classes existantes
             let searchedNode = MSEDocument.getProject().search(this.node.getSourceFile().getBaseName() + "#" + this.famixElement.getName(), type.CLASS)

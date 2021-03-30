@@ -51,7 +51,7 @@ export abstract class FamixElement<FamixType> implements Component {
 
     // To search inside execute() only
     search(id: string, type: string): FamixElement<any> {
-        if (this.id.indexOf(id) !== -1 && this.type.indexOf(type) !== -1) {
+        if (this.id === id && this.type === type) {
             return this
         }
         return null

@@ -12,14 +12,6 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
             element.getSourceFile().getFilePath() + "#" + element.getName(), type.ATTRIBUTE);
     }
 
-    findNodes() {
-        let startNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getPos())
-        let endNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getEnd())
-        let index = new FileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement,startNumber.line,endNumber.line,startNumber.column,endNumber.column)
-        index.execute()
-        this.famixElement.setSourceAnchor(index.famixElement)
-    }
-
     execute(): void {
 
         // Define name
@@ -31,8 +23,14 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
 
         this.famixElement.setParentType(this.parentNode.famixElement)
 
+        let startNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getPos())
+        let endNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getEnd())
+        let index = new FileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement, startNumber.line, endNumber.line, startNumber.column, endNumber.column)
+        index.execute()
+        this.famixElement.setSourceAnchor(index.famixElement)
+
         this.node.getModifiers().forEach(modifier => {
-            if(modifier.getText() == 'static'){
+            if (modifier.getText() == 'static') {
                 this.famixElement.setHasClassScope(true)
             }
         })
@@ -41,7 +39,7 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
     }
 
     // TODO - Change
-    setDeclaredType(): void {
+    setDeclaredTypeFamix(): void {
         if (!this.node.getType().isAny()) {
             // Classes existantes
             let searchedNode = MSEDocument.getProject().search(this.node.getSourceFile().getBaseName() + "#" + this.famixElement.getName(), type.CLASS)

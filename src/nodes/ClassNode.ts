@@ -38,8 +38,8 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
         //TODO - Search in imports
         // this.sourceFileNode.nodes.forEach(node => {
         // })
-        let searched = MSEDocument.getProject().search(extend, type.CLASS) as FamixNode<ClassDeclaration, Class>
         if (undefined !== extend) {
+            let searched = MSEDocument.getProject().search(extend, type.CLASS) as FamixNode<ClassDeclaration, Class>
             if (searched) {
                 this.addNode(new InheritanceElement(this, searched))
             } else {
