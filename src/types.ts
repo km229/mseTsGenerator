@@ -1,5 +1,7 @@
+
 export const PROJECT = "Project"
 export const FILE = "File"
+export const IMPORT = "Import"
 export const DIRECTORY = "Directory"
 export const ATTRIBUTE = "Attribute"
 export const CLASS = "Class"

@@ -24,7 +24,8 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
         this.famixElement.setName(this.node.getName())
 
         // Define declaredType
-        this.setDeclaredType()
+        // TODO - Correct
+        //this.setDeclaredType()
 
         this.famixElement.setParentType(this.parentNode.famixElement)
 
@@ -39,15 +40,15 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
 
     // TODO - Change
     setDeclaredType(): void {
-        if (!this.node.getTypeNode().getType().isAny()) {
+        if (!this.node.getType().isAny()) {
             // Classes existantes
-            let searchedNode = MSEDocument.getProject().search('', `${this.node.getTypeNode().getType().getText()}#Class`)
+            let searchedNode = MSEDocument.getProject().search(this.node.getSourceFile().getBaseName() + "#" + this.famixElement.getName(), type.CLASS)
             if (null != searchedNode) {
                 this.famixElement.setDeclaredType(searchedNode.famixElement)
                 return
             }
             // Types primitifs
-            searchedNode = MSEDocument.getProject().search(this.node.getTypeNode().getType().getText(), `${this.node.getTypeNode().getType().getText()}`)
+            searchedNode = MSEDocument.getProject().search(this.node.getType().getText(), `${this.node.getType().getText()}`)
             if (null != searchedNode) {
                 this.famixElement.setDeclaredType(searchedNode.famixElement)
             }

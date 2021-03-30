@@ -1,3 +1,4 @@
+import * as type from "../types"
 import {ParameterDeclaration} from "ts-morph"
 import {Parameter} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
@@ -7,7 +8,7 @@ import {IndexedFileAnchorElement} from "../elements"
 export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
 
     constructor(parametre: ParameterDeclaration) {
-        super(parametre, new Parameter(MSEDocument.getFamixRepository()), parametre.getName(), 'Parameter');
+        super(parametre, new Parameter(MSEDocument.getFamixRepository()), parametre.getName(), type.PARAMETER);
     }
 
     findNodes() {
@@ -20,7 +21,8 @@ export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
         this.famixElement.setName(this.node.getName())
 
         // Define declaredType
-        this.setDeclaredType()
+        // TODO - Correct
+        //this.setDeclaredType()
 
         this.famixElement.setParentBehaviouralEntity(this.parentNode.famixElement)
     }
@@ -29,7 +31,7 @@ export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
     setDeclaredType(): void {
         if (!this.node.getType().isAny()) {
             // Classes existantes
-            let searchedNode = MSEDocument.getProject().search('', `${this.node.getType().getText()}#Class`)
+            let searchedNode = MSEDocument.getProject().search(this.node.getSourceFile().getBaseName() + "#" + this.famixElement.getName(), type.CLASS)
             if (null != searchedNode) {
                 this.famixElement.setDeclaredType(searchedNode.famixElement)
                 return

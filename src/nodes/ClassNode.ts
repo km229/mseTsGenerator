@@ -9,7 +9,8 @@ import {ContainerNode, InheritanceElement} from "../elements"
 export class ClassNode extends FamixNode<ClassDeclaration, Class> {
 
     constructor(element: ClassDeclaration) {
-        super(element, new Class(MSEDocument.getFamixRepository()), element.getSourceFile().getFilePath() + "#" + element.getName(), type.CLASS);
+        super(element, new Class(MSEDocument.getFamixRepository()), element.getSourceFile().getBaseName() + "#" + element.getName(), type.CLASS);
+        ClassNode.components.push(this)
     }
 
     findNodes() {
@@ -33,7 +34,10 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
         let extend
         this.node.getExtends() != undefined ? extend = this.node.getExtends().getText() : extend = undefined
 
-        let searched = MSEDocument.getProject().search(extend, `${extend}#Class`) as FamixNode<ClassDeclaration, Class>
+        //TODO - Search in imports
+        // this.sourceFileNode.nodes.forEach(node => {
+        // })
+        let searched = MSEDocument.getProject().search(extend, type.CLASS) as FamixNode<ClassDeclaration, Class>
         if (undefined !== extend) {
             if (searched) {
                 this.addNode(new InheritanceElement(this, searched))

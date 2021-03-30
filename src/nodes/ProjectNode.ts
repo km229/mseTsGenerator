@@ -17,7 +17,7 @@ export class ProjectNode extends FamixNode<Project, null> {
         // Recherche des fichiers et des dossiers
         this.node.getSourceFiles().forEach(file => {
             this.addNode(new FileNode(file))
-            let folder = this.search(file.getDirectory().getPath(), 'Directory')
+            let folder = this.search(file.getDirectory().getPath(), type.DIRECTORY)
             if (null == folder) {
                 this.addNode(new FolderNode(file.getDirectory()))
             }

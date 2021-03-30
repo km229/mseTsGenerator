@@ -1,6 +1,6 @@
 {
-  "name": "tsparser_mgl843",
-  "version": "1.0.0",
+  "name": "mseTsGenerator",
+  "version": "2.0",
   "description": "Project for course MGL843",
   "main": "index.ts",
   "scripts": {

@@ -11,10 +11,6 @@ export class FamixNode<NodeType, FamixType> extends FamixElement<FamixType> {
         this._nodes = []
     }
 
-    get nodes(): FamixElement<any>[] {
-        return this._nodes;
-    }
-
     // Method to search all nodes
     findNodes() {
         this._nodes.forEach(e => {
@@ -29,23 +25,27 @@ export class FamixNode<NodeType, FamixType> extends FamixElement<FamixType> {
         })
     }
 
+    get nodes(): FamixElement<any>[] {
+        return this._nodes;
+    }
+
+    get node(): NodeType {
+        return this._node;
+    }
+
     // Method to search a node in the tree of current node's descendants
-    search(name: string, type: string): FamixElement<any> {
-        let result = super.search(name, type)
+    search(id: string, type: string): FamixElement<any> {
+        let result = super.search(id, type)
         if (result != null) {
             return result
         }
         this._nodes.forEach(e => {
-            let temp = e.search(name, type)
+            let temp = e.search(id, type)
             if (null != temp) {
                 result = temp
             }
         })
         return result
-    }
-
-    get node(): NodeType {
-        return this._node;
     }
 
     addNode(item: FamixElement<any>) {

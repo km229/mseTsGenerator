@@ -1,3 +1,4 @@
+import * as type from "../types"
 import {FunctionDeclaration} from "ts-morph"
 import {Function} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
@@ -9,7 +10,7 @@ export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
     nbParameter: number
 
     constructor(fonction: FunctionDeclaration) {
-        super(fonction, new Function(MSEDocument.getFamixRepository()), fonction.getName(), "Function")
+        super(fonction, new Function(MSEDocument.getFamixRepository()), fonction.getName(), type.FUNCTION)
         this.nbParameter = 0
     }
 
@@ -25,7 +26,7 @@ export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
 
     execute(): void {
         this.famixElement.setName(this.node.getName())
-        //this.famixElement.setNumberOfStatements(this.node.getEndLineNumber() - this.node.getStartLineNumber())
+        //this.famixElement.setNumberOfStatements(this.0.node.getEndLineNumber() - this.node.getStartLineNumber())
         if (this.nbParameter != 0) {
             this.famixElement.setNumberOfParameters(this.nbParameter)
         }
