@@ -1,64 +1,71 @@
-import time from './time';
 
-class premier extends time {
+namespace TestSpace {
+    import time from './time';
 
-    constructor(premier: number, sec: number) {
-        super(premier, "\'");
-        this.sec = new seconde(sec)
-        this.sec.valeur = this.convertSeconds()
-    }
+    var TEST = "cc"
+    const TEST2 = "cc2"
 
-    private _sec: seconde
+    class premier extends time {
 
-    get sec(): seconde {
-        return this._sec;
-    }
+        constructor(premier: number, sec: number) {
+            super(premier, "\'");
+            this.sec = new seconde(sec)
+            this.sec.valeur = this.convertSeconds()
+        }
 
-    set sec(value: seconde) {
-        this._sec = value;
-    }
+        private _sec: seconde
 
-    convertSeconds(): number {
-        if (this.sec.valeur > 60) {
-            let min = this.sec.valeur / 60
-            this.valeur += Math.round(min)
-            this.sec.valeur = this.sec.valeur % 60
-        } else {
-            return this.sec.valeur
+        get sec(): seconde {
+            return this._sec;
+        }
+
+        set sec(value: seconde) {
+            this._sec = value;
+        }
+
+        convertSeconds(): number {
+            if (this.sec.valeur > 60) {
+                let min = this.sec.valeur / 60
+                this.valeur += Math.round(min)
+                this.sec.valeur = this.sec.valeur % 60
+            } else {
+                return this.sec.valeur
+            }
+        }
+
+        print(): string {
+            return this.valeur + this.text + this._sec.print()
         }
     }
 
-    print(): string {
-        return this.valeur + this.text + this._sec.print()
-    }
-}
+    class seconde extends time {
 
-class seconde extends time {
-
-    constructor(value: number) {
-        super(value, "\"");
-    }
-
-    print(): string {
-        return this.valeur + this.text
-    }
-}
-
-function isPrime(n: number): boolean {
-    let prime = true;
-    let i = 2;
-    while (i < n) {
-        if (n % i == 0) {
-            prime = false;
+        constructor(value: number) {
+            super(value, "\"");
         }
-        i++;
+
+        print(): string {
+            return this.valeur + this.text
+        }
     }
-    return prime;
+
+    function isPrime(n: number): boolean {
+        let prime = true;
+        let i = 2;
+        while (i < n) {
+            if (n % i == 0) {
+                prime = false;
+            }
+            i++;
+        }
+        return prime;
+    }
+
+    function printMinutesAndSecondes(min: number, sec: number): void {
+        let val = new premier(min, sec)
+        console.log(val.print())
+    }
+
 }
 
-function printMinutesAndSecondes(min: number, sec: number): void {
-    let val = new premier(min, sec)
-    console.log(val.print())
-}
-
-printMinutesAndSecondes(2, 90)
+TestSpace.printMinutesAndSecondes(2, 90)

@@ -4,6 +4,7 @@ import {File} from "../../lib/pascalerni/model/file"
 import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"
 import {ClassNode, FunctionNode} from "../nodes"
+import {NamespaceNode} from "./NamespaceNode"
 
 export class FileNode extends FamixNode<SourceFile, File> {
 
@@ -27,6 +28,10 @@ export class FileNode extends FamixNode<SourceFile, File> {
         })
         //TODO - Search imports
         //this.getImports(this.node.getImportDeclarations())
+
+        this.node.getNamespaces().forEach(node => {
+            this.add(new NamespaceNode (node))
+         })
 
         //Search namespaces
         // this._node.getNamespaces().forEach(node => {
