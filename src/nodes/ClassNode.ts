@@ -37,6 +37,8 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
             this.addNode(attrElement)
         })
 
+        // Recherche au sein des noeuds enfants
+        super.findNodes()
     }
 
     execute(): void {
@@ -50,11 +52,14 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
         })
 
         // Définition du type de classe (src / test)
-        if (this.sourceFileNode.id.indexOf(".test.ts") !== -1) {
-            this.famixElement.setIsTestCase(true)
-        } else {
-            this.famixElement.setIsTestCase(false)
-        }
+        // if(this.sourceFileNode.id==undefined){
+        //     console.log("test")
+        // }
+        // if (this.sourceFileNode.id.indexOf(".test.ts") !== -1) {
+        //     this.famixElement.setIsTestCase(true)
+        // } else {
+        //     this.famixElement.setIsTestCase(false)
+        // }
 
         // Définition de l'héritage
         let extend
@@ -63,7 +68,7 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
         // this.sourceFileNode.nodes.forEach(node => {
         // })
         if (undefined !== extend) {
-            let searched = MSEDocument.getProject().search(extend, type.CLASS) as FamixNode<ClassDeclaration, Class>
+            let searched = MSEDocument.getProject().search("#" + extend, type.CLASS) as FamixNode<ClassDeclaration, Class>
             if (searched) {
                 this.addNode(new InheritanceElement(this, searched))
             }
@@ -71,7 +76,7 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
 
         // Définition de l'implémentation
         this.node.getImplements().forEach(implement => {
-            let searched = MSEDocument.getProject().search(implement.getText(), type.INTERFACE) as FamixNode<ClassDeclaration, Class>
+            let searched = MSEDocument.getProject().search("#" + implement.getText(), type.INTERFACE) as FamixNode<ClassDeclaration, Class>
             if (searched) {
                 this.addNode(new InheritanceElement(this, searched))
             }

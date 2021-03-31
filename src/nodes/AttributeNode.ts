@@ -3,11 +3,11 @@ import {PropertyDeclaration} from "ts-morph"
 import {Attribute} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"
-import {FileAnchorElement} from "../elements/FileAnchorElement";
+import {FileAnchorElement} from "../elements"
 
 export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
 
-    constructor(element: PropertyDeclaration) {
+    constructor(element: any) {
         super(element, new Attribute(MSEDocument.getFamixRepository()),
             element.getSourceFile().getFilePath() + "#" + element.getName(), type.ATTRIBUTE);
     }

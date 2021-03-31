@@ -1,6 +1,9 @@
 namespace CarSpace {
 
     interface Blah {
+        test: string
+
+        drive(number, boolean, string)
     }
 
     class Car implements Blah {

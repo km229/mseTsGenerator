@@ -3,6 +3,9 @@ import {NamespaceDeclaration} from "ts-morph"
 import {Namespace} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"
+import {ClassNode} from "./ClassNode";
+import {InterfaceNode} from "./InterfaceNode";
+import {FunctionNode} from "./FunctionNode";
 
 const KIND_ATTRIBUTE_NUMBER = 232
 
@@ -14,7 +17,30 @@ export class NamespaceNode extends FamixNode<NamespaceDeclaration, Namespace> {
     }
 
     findNodes() {
-        this.node.getClasses()
+        //Search classes
+        this.node.getClasses().forEach(node => {
+            let element = new ClassNode(node)
+            element.sourceFileNode = this.sourceFileNode
+            this.addNode(element)
+        })
+        this.node.getInterfaces().forEach(node => {
+            let element = new InterfaceNode(node)
+            element.sourceFileNode = this.sourceFileNode
+            this.addNode(element)
+        })
+        //Search functions
+        this.node.getFunctions().forEach(node => {
+            let element = new FunctionNode(node)
+            element.sourceFileNode = this.sourceFileNode
+            this.addNode(element)
+        })
+        //TODO - Search imports
+        //this.getImports(this.node.getImportDeclarations())
+        //Search namespaces
+        this.node.getNamespaces().forEach(node => {
+            this.addNode(new NamespaceNode(node))
+        })
+        //Search in descendants
         super.findNodes();
     }
 

@@ -23,6 +23,9 @@ export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
             element.parentNode = this
             this.addNode(element)
         })
+
+        // Recherche au sein des noeuds enfants
+        super.findNodes()
     }
 
 

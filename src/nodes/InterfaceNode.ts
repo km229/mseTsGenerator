@@ -26,6 +26,8 @@ export class InterfaceNode extends FamixNode<InterfaceDeclaration, Class> {
         //     this.addNode(attrElement)
         // })
 
+        // Recherche au sein des noeuds enfants
+        super.findNodes()
     }
 
     execute(): void {
