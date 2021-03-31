@@ -15,7 +15,8 @@ export class AttributeNode extends FamixNode<PropertyDeclaration, Attribute> {
     execute(): void {
 
         // Define name
-        this.famixElement.setName(this.node.getName())
+        let name = this.node.getName() == undefined ? this.node.getSourceFile().getBaseName() : this.node.getName()
+        this.famixElement.setName(name.replace(/'/g, "\""))
 
         // Define declaredType
         // TODO - Correct

@@ -10,7 +10,8 @@ export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
     nbParameter: number
 
     constructor(fonction: FunctionDeclaration) {
-        super(fonction, new Function(MSEDocument.getFamixRepository()), fonction.getName(), type.FUNCTION)
+        super(fonction, new Function(MSEDocument.getFamixRepository()),
+            fonction.getSourceFile().getBaseName() + "#" + fonction.getName(), type.FUNCTION)
         FunctionNode.components.push(this)
         this.nbParameter = 0
     }
@@ -26,7 +27,10 @@ export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
 
 
     execute(): void {
-        this.famixElement.setName(this.node.getName())
+
+        let name = this.node.getName() == undefined ? this.node.getSourceFile().getBaseName() : this.node.getName()
+        this.famixElement.setName(name.replace(/'/g, "\""))
+
         //this.famixElement.setNumberOfStatements(this.0.node.getEndLineNumber() - this.node.getStartLineNumber())
         if (this.nbParameter != 0) {
             this.famixElement.setNumberOfParameters(this.nbParameter)

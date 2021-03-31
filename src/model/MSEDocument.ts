@@ -9,24 +9,18 @@ export class MSEDocument {
     private static _metricService: MetricService
 
     constructor(projectPath: string) {
-        MSEDocument._fmx = MSEDocument.getFamixRepository()
-        MSEDocument._project = MSEDocument.getProject(projectPath)
+        MSEDocument._fmx = new FamixRepository()
+        MSEDocument._project = new ProjectNode(projectPath)
         MSEDocument._metricService = MetricService.getMetricService()
         MSEDocument.getProject().findNodes()
         MSEDocument.getProject().execute()
     }
 
     static getFamixRepository(): FamixRepository {
-        if (!MSEDocument._fmx) {
-            MSEDocument._fmx = new FamixRepository()
-        }
         return MSEDocument._fmx
     }
 
-    static getProject(projectPath?: string): ProjectNode {
-        if (!MSEDocument._project) {
-            MSEDocument._project = new ProjectNode(projectPath)
-        }
+    static getProject(): ProjectNode {
         return MSEDocument._project
     }
 

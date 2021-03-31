@@ -19,13 +19,16 @@ export class NamespaceNode extends FamixNode<NamespaceDeclaration, Namespace> {
     }
 
     execute(): void {
+        //Définition du nom
+        let name = this.node.getName() == undefined ? this.node.getSourceFile().getBaseName() : this.node.getName()
+        this.famixElement.setName(name.replace(/'/g, "\""))
+
         let nbAttributes = 0
         this.node.getStatements().forEach(statement => {
             if (statement.getKind() == KIND_ATTRIBUTE_NUMBER) {
                 nbAttributes++
             }
         })
-        this.famixElement.setName(this.node.getName())
         this.famixElement.setNumberOfAttributes(nbAttributes)
         super.execute()
     }

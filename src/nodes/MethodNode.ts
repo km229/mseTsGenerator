@@ -4,7 +4,7 @@ import {MSEDocument} from "../model/MSEDocument";
 import {FamixNode} from "../model/FamixNode";
 import {ParameterNode} from "./ParameterNode";
 import {FileAnchorElement} from "../elements/FileAnchorElement";
-import { AccessElement } from "../elements/AccessElement";
+import {AccessElement} from "../elements/AccessElement";
 
 export class MethodNode extends FamixNode<MethodDeclaration, Method> {
 
@@ -16,7 +16,9 @@ export class MethodNode extends FamixNode<MethodDeclaration, Method> {
     }
 
     execute(): void {
-        this.famixElement.setName(this.node.getName())
+        //Définition du nom
+        let name = this.node.getName() == undefined ? this.node.getSourceFile().getBaseName() : this.node.getName()
+        this.famixElement.setName(name.replace(/'/g, "\""))
 
         //Nombre de paramètres dans la méthode
         let nbParameter = 0;

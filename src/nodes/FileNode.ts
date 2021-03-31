@@ -1,10 +1,9 @@
 import * as type from "../types"
-import {ImportDeclaration, SourceFile} from "ts-morph"
+import {SourceFile} from "ts-morph"
 import {File} from "../../lib/pascalerni/model/file"
 import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"
-import {ClassNode, FunctionNode} from "../nodes"
-import {NamespaceNode} from "./NamespaceNode"
+import {ClassNode, FunctionNode, InterfaceNode, NamespaceNode} from "../nodes"
 
 export class FileNode extends FamixNode<SourceFile, File> {
 
@@ -20,6 +19,11 @@ export class FileNode extends FamixNode<SourceFile, File> {
             element.sourceFileNode = this
             this.addNode(element)
         })
+        this.node.getInterfaces().forEach(node => {
+            let element = new InterfaceNode(node)
+            element.sourceFileNode = this
+            this.addNode(element)
+        })
         //Search functions
         this.node.getFunctions().forEach(node => {
             let element = new FunctionNode(node)
@@ -31,22 +35,22 @@ export class FileNode extends FamixNode<SourceFile, File> {
         //Search namespaces
         this.node.getNamespaces().forEach(node => {
             this.addNode(new NamespaceNode(node))
-         })
+        })
         //Search in descendants
         super.findNodes();
     }
 
-    getImports(imports: ImportDeclaration[]): void {
-        imports.forEach(imp => {
-            if (imp.getNamespaceImport() != undefined) {
-
-            } else if (imp.getNamedImports().length !== 0) {
-
-            } else {
-                imp.getDefaultImport()
-            }
-        })
-    }
+    // getImports(imports: ImportDeclaration[]): void {
+    //     imports.forEach(imp => {
+    //         if (imp.getNamespaceImport() != undefined) {
+    //
+    //         } else if (imp.getNamedImports().length !== 0) {
+    //
+    //         } else {
+    //             imp.getDefaultImport()
+    //         }
+    //     })
+    // }
 
     execute(): void {
         this.famixElement.setName(this.node.getBaseName())

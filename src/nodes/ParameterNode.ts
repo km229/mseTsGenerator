@@ -3,16 +3,19 @@ import {ParameterDeclaration} from "ts-morph"
 import {Parameter} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"
-import {FileAnchorElement} from "../elements/FileAnchorElement";
+import {FileAnchorElement} from "../elements";
 
 export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
 
     constructor(parametre: ParameterDeclaration) {
-        super(parametre, new Parameter(MSEDocument.getFamixRepository()), parametre.getName(), type.PARAMETER);
+        super(parametre, new Parameter(MSEDocument.getFamixRepository()),
+            parametre.getName().replace(/'/g, "\""), type.PARAMETER);
     }
 
     execute(): void {
-        this.famixElement.setName(this.node.getName())
+        // Définition du nom
+        let name = this.node.getName() == undefined ? this.node.getSourceFile().getBaseName() : this.node.getName()
+        this.famixElement.setName(name.replace(/'/g, "\""))
 
         // Define declaredType
         // TODO - Correct
@@ -20,7 +23,7 @@ export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
 
         let startNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getPos())
         let endNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getEnd())
-        let index = new FileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement,startNumber.line,endNumber.line,startNumber.column,endNumber.column)
+        let index = new FileAnchorElement(this.node.getSourceFile().getFilePath(), this.famixElement, startNumber.line, endNumber.line, startNumber.column, endNumber.column)
         index.execute()
         this.famixElement.setSourceAnchor(index.famixElement)
 

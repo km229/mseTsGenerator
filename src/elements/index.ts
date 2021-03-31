@@ -1,5 +1,5 @@
 
-export * from './ContainerNode'
+export * from './AccessElement'
 export * from './InheritanceElement'
-export * from './IndexedFileAnchorElement'
+export * from './FileAnchorElement'
 export * from './PrimitiveElement'
