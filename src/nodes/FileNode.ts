@@ -30,27 +30,15 @@ export class FileNode extends FamixNode<SourceFile, File> {
             element.sourceFileNode = this
             this.addNode(element)
         })
-        //TODO - Search imports
-        //this.getImports(this.node.getImportDeclarations())
         //Search namespaces
         this.node.getNamespaces().forEach(node => {
-            this.addNode(new NamespaceNode(node))
+            let element = new NamespaceNode(node)
+            element.sourceFileNode = this
+            this.addNode(element)
         })
         //Search in descendants
         super.findNodes();
     }
-
-    // getImports(imports: ImportDeclaration[]): void {
-    //     imports.forEach(imp => {
-    //         if (imp.getNamespaceImport() != undefined) {
-    //
-    //         } else if (imp.getNamedImports().length !== 0) {
-    //
-    //         } else {
-    //             imp.getDefaultImport()
-    //         }
-    //     })
-    // }
 
     execute(): void {
         this.famixElement.setName(this.node.getBaseName())

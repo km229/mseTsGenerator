@@ -18,8 +18,7 @@ export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
         this.famixElement.setName(name.replace(/'/g, "\""))
 
         // Define declaredType
-        // TODO - Correct
-        //this.setDeclaredType()
+        this.setDeclaredTypeFamix()
 
         let startNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getPos())
         let endNumber = this.node.getSourceFile().getLineAndColumnAtPos(this.node.getEnd())
@@ -30,17 +29,10 @@ export class ParameterNode extends FamixNode<ParameterDeclaration, Parameter> {
         this.famixElement.setParentBehaviouralEntity(this.parentNode.famixElement)
     }
 
-    // TODO - Change
     setDeclaredTypeFamix(): void {
         if (!this.node.getType().isAny()) {
-            // Classes existantes
-            let searchedNode = MSEDocument.getProject().search(this.node.getSourceFile().getBaseName() + "#" + this.famixElement.getName(), type.CLASS)
-            if (null != searchedNode) {
-                this.famixElement.setDeclaredType(searchedNode.famixElement)
-                return
-            }
-            // Types primitifs
-            searchedNode = MSEDocument.getProject().search(this.node.getType().getText(), `${this.node.getType().getText()}`)
+            // Recherche du type
+            let searchedNode = MSEDocument.getProject().search("#" + this.node.getType().getText(), "")
             if (null != searchedNode) {
                 this.famixElement.setDeclaredType(searchedNode.famixElement)
             }

@@ -24,6 +24,9 @@ export class ProjectNode extends FamixNode<Project, null> {
         })
 
         // Ajout des types primitifs
+        this.addNode(new PrimitiveElement('any'))
+        this.addNode(new PrimitiveElement('void'))
+        this.addNode(new PrimitiveElement('bigint'))
         this.addNode(new PrimitiveElement('object'))
         this.addNode(new PrimitiveElement('number'))
         this.addNode(new PrimitiveElement('string'))

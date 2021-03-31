@@ -1,14 +1,15 @@
-import {FamixElement} from "../model/FamixElement";
+import * as type from '../types'
+import {FamixElement} from "../model/FamixElement"
 import {PrimitiveType} from "../../lib/pascalerni/model/famix"
-import {MSEDocument} from "../model/MSEDocument";
+import {MSEDocument} from "../model/MSEDocument"
 
 export class PrimitiveElement extends FamixElement<PrimitiveType> {
 
     constructor(primitiveName: string) {
-        super(new PrimitiveType(MSEDocument.getFamixRepository()), primitiveName, primitiveName);
+        super(new PrimitiveType(MSEDocument.getFamixRepository()), "#" + primitiveName, type.PRIMITIF);
     }
 
     execute() {
-        this.famixElement.setName(this.id)
+        this.famixElement.setName(this.id.substring(1))
     }
 }

@@ -52,21 +52,15 @@ export class ClassNode extends FamixNode<ClassDeclaration, Class> {
         })
 
         // Définition du type de classe (src / test)
-        // if(this.sourceFileNode.id==undefined){
-        //     console.log("test")
-        // }
-        // if (this.sourceFileNode.id.indexOf(".test.ts") !== -1) {
-        //     this.famixElement.setIsTestCase(true)
-        // } else {
-        //     this.famixElement.setIsTestCase(false)
-        // }
+        if (undefined !== this.sourceFileNode.id && this.sourceFileNode.id.indexOf(".test.ts") !== -1) {
+            this.famixElement.setIsTestCase(true)
+        } else {
+            this.famixElement.setIsTestCase(false)
+        }
 
         // Définition de l'héritage
         let extend
         this.node.getExtends() != undefined ? extend = this.node.getExtends().getText() : extend = undefined
-        //TODO - Search in imports
-        // this.sourceFileNode.nodes.forEach(node => {
-        // })
         if (undefined !== extend) {
             let searched = MSEDocument.getProject().search("#" + extend, type.CLASS) as FamixNode<ClassDeclaration, Class>
             if (searched) {

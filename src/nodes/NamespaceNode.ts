@@ -17,26 +17,25 @@ export class NamespaceNode extends FamixNode<NamespaceDeclaration, Namespace> {
     }
 
     findNodes() {
-        //Search classes
+        // Search classes
         this.node.getClasses().forEach(node => {
             let element = new ClassNode(node)
             element.sourceFileNode = this.sourceFileNode
             this.addNode(element)
         })
+        // Search interfaces
         this.node.getInterfaces().forEach(node => {
             let element = new InterfaceNode(node)
             element.sourceFileNode = this.sourceFileNode
             this.addNode(element)
         })
-        //Search functions
+        // Search functions
         this.node.getFunctions().forEach(node => {
             let element = new FunctionNode(node)
             element.sourceFileNode = this.sourceFileNode
             this.addNode(element)
         })
-        //TODO - Search imports
-        //this.getImports(this.node.getImportDeclarations())
-        //Search namespaces
+        // Search namespaces
         this.node.getNamespaces().forEach(node => {
             this.addNode(new NamespaceNode(node))
         })
@@ -49,6 +48,7 @@ export class NamespaceNode extends FamixNode<NamespaceDeclaration, Namespace> {
         let name = this.node.getName() == undefined ? this.node.getSourceFile().getBaseName() : this.node.getName()
         this.famixElement.setName(name.replace(/'/g, "\""))
 
+        // TODO - Ask ???
         let nbAttributes = 0
         this.node.getStatements().forEach(statement => {
             if (statement.getKind() == KIND_ATTRIBUTE_NUMBER) {

@@ -17,6 +17,7 @@ export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
     }
 
     findNodes() {
+        // Recherche des paramètres
         this.node.getParameters().forEach(parameter => {
             this.nbParameter++
             let element = new ParameterNode(parameter)
@@ -31,18 +32,18 @@ export class FunctionNode extends FamixNode<FunctionDeclaration, Function> {
 
     execute(): void {
 
+        //Définition du nom
         let name = this.node.getName() == undefined ? this.node.getSourceFile().getBaseName() : this.node.getName()
         this.famixElement.setName(name.replace(/'/g, "\""))
 
-        //this.famixElement.setNumberOfStatements(this.0.node.getEndLineNumber() - this.node.getStartLineNumber())
-        if (this.nbParameter != 0) {
-            this.famixElement.setNumberOfParameters(this.nbParameter)
-        }
-        ;
+        //Définition du nombre de paramètres
+        this.famixElement.setNumberOfParameters(this.nbParameter)
 
+        //Définition de la complexité cyclomatique
         let complexity = MSEDocument.getMetricService().getCyclomaticComplexity(this.node);
         this.famixElement.setCyclomaticComplexity(complexity);
 
+        // Définition des descendants
         super.execute()
     }
 }
