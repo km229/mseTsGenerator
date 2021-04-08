@@ -1,62 +1,82 @@
+import * as type from "../types"
 import {ClassDeclaration} from "ts-morph"
-import {Class} from "../lib/pascalerni/model/famix"
-import {MSEDocument} from "../MSEDocument"
+import {Class} from "../../lib/pascalerni/model/famix"
+import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"
-import {AttributeNode} from "./AttributeNode"
-import {ContainerNode} from "../elements/ContainerNode";
-import {InheritanceElement} from "../elements/InheritanceElement";
-import {ConstructorNode, MethodNode} from "./";
+import {AttributeNode, ConstructorNode, MethodNode} from "../nodes"
+import {InheritanceElement} from "../elements"
 
 export class ClassNode extends FamixNode<ClassDeclaration, Class> {
 
     constructor(element: ClassDeclaration) {
-        super(element, new Class(MSEDocument.getFamixRepository()), element.getSourceFile().getFilePath()+"#"+element.getName(), element.getName()+"#Class");
-        let container = new ContainerNode(element.getName(), this.node)
-        container.execute()
-        this.famixElement.setContainer(container.famixElement)
+        super(element, new Class(MSEDocument.getFamixRepository()),
+            element.getSourceFile().getBaseName() + "#" + element.getName(), type.CLASS);
+        ClassNode.components.push(this)
+    }
+
+    findNodes() {
+        // Recherche des attributs
+        this.node.getProperties().forEach(attribute => {
+            let attrElement = new AttributeNode(attribute)
+            attrElement.parentNode = this
+            attrElement.sourceFileNode = this.sourceFileNode
+            this.addNode(attrElement)
+        })
+        // Recherche des méthodes
+        this.node.getMethods().forEach(node => {
+            let attrElement = new MethodNode(node)
+            attrElement.parentNode = this
+            attrElement.sourceFileNode = this.sourceFileNode
+            this.addNode(attrElement)
+        })
+        // Recherche des constructeurs
+        this.node.getConstructors().forEach(node => {
+            let attrElement = new ConstructorNode(node)
+            attrElement.parentNode = this
+            attrElement.sourceFileNode = this.sourceFileNode
+            this.addNode(attrElement)
+        })
+
+        // Recherche au sein des noeuds enfants
+        super.findNodes()
     }
 
     execute(): void {
+        // Définition du nom
+        let name = this.node.getName() == undefined ? this.node.getSourceFile().getBaseName() : this.node.getName()
+        this.famixElement.setName(name.replace(/'/g, "\""))
 
-        this.famixElement.setName(this.node.getName())
-
-        this.node.getProperties().forEach(attribute => {
-            let attrElement = new AttributeNode(attribute)
-            attrElement.parentNode=this
-            this.add(attrElement)
+        // Définition des modifiers
+        this.node.getModifiers().forEach(modifier => {
+            this.famixElement.addModifiers(modifier.getText())
         })
 
-        this.node.getMethods().forEach(node => {
-            let attrElement = new MethodNode(node)
-            attrElement.parentNode=this
-            this.add(attrElement)
-        })
-        this.node.getConstructors().forEach(node => {
-            let attrElement = new ConstructorNode(node)
-            attrElement.parentNode=this
-            this.add(attrElement)
-        })
+        // Définition du type de classe (src / test)
+        if (undefined !== this.sourceFileNode.id && this.sourceFileNode.id.indexOf(".test.ts") !== -1) {
+            this.famixElement.setIsTestCase(true)
+        } else {
+            this.famixElement.setIsTestCase(false)
+        }
 
+        // Définition de l'héritage
         let extend
         this.node.getExtends() != undefined ? extend = this.node.getExtends().getText() : extend = undefined
-
-        let searched = MSEDocument.getProject().search(extend, `${extend}#Class`) as FamixNode<ClassDeclaration, Class>
         if (undefined !== extend) {
+            let searched = MSEDocument.getProject().search("#" + extend, type.CLASS) as FamixNode<ClassDeclaration, Class>
             if (searched) {
-                this.add(new InheritanceElement(this, searched))
-            } else {
-                //TODO - Search class not added
+                this.addNode(new InheritanceElement(this, searched))
             }
         }
 
+        // Définition de l'implémentation
         this.node.getImplements().forEach(implement => {
-            this.famixElement.setIsInterface(true)
-            //TODO - Interface
-            // let interface = new InterfaceNode(node)
-            // interface.parentNode=this
-            // this.add(interface)
+            let searched = MSEDocument.getProject().search("#" + implement.getText(), type.INTERFACE) as FamixNode<ClassDeclaration, Class>
+            if (searched) {
+                this.addNode(new InheritanceElement(this, searched))
+            }
         })
 
+        // Définition des descendants
         super.execute()
     }
 }

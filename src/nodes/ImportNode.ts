@@ -1,20 +1,20 @@
-//
-//
-// import {ImportDeclaration} from "ts-morph"
-// import {MSEDocument} from "../MSEDocument"
-// import {FameNode} from "./index"
-//
-// export class ImportNode extends FameNode<ImportDeclaration> {
-//
-//     constructor(ctx: MSEDocument, node: ImportDeclaration) {
-//         super(ctx, node)
-//     }
-//
-//     toMSE(): string {
-//         return "";
-//     }
-//
-//     explore(): void {
-//     }
-//
-// }
+import * as type from "../types"
+import {ImportDeclaration} from "ts-morph"
+import {FamixNode} from "../model/FamixNode"
+
+export class ImportNode extends FamixNode<ImportDeclaration, null> {
+
+    constructor(importNode: ImportDeclaration) {
+        super(importNode, null, "#" + importNode.getStartLineNumber(), type.IMPORT)
+        ImportNode.components.push(this)
+    }
+
+    findNodes() {
+
+    }
+
+
+    execute(): void {
+        super.execute()
+    }
+}

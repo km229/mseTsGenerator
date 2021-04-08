@@ -1,82 +1,59 @@
-export abstract class time {
+import time from './time'
 
-    protected constructor(value: number, txt: string) {
-        this._valeur = value
-        this._text = txt
-        this.testModule()
-        this.print()
-    }
+namespace TestSpace {
 
-    private _valeur: number
+    var TEST = "cc"
+    const TEST2 = "cc2"
 
-    get valeur(): number {
-        return this._valeur;
-    }
+    class premier extends time {
 
-    set valeur(value: number) {
-        this._valeur = value;
-    }
+        constructor(premier: number, sec: number) {
+            super(premier, "\'");
+            this.sec = new seconde(sec)
+            this.sec.valeur = this.convertSeconds()
+        }
 
-    private _text: string
+        private _sec: seconde
 
-    get text(): string {
-        return this._text;
-    }
+        get sec(): seconde {
+            return this._sec;
+        }
 
-    set text(value: string) {
-        this._text = value;
-    }
+        set sec(value: seconde) {
+            this._sec = value;
+        }
 
-    testModule(): void {
+        convertSeconds(): number {
+            if (this.sec.valeur > 60) {
+                let min = this.sec.valeur / 60
+                this.valeur += Math.round(min)
+                this.sec.valeur = this.sec.valeur % 60
+            } else {
+                return this.sec.valeur
+            }
+        }
 
-    }
-
-    abstract print(): string;
-
-}
-
-class premier extends time {
-
-    constructor(premier: number, sec: number) {
-        super(premier, "\'");
-        this.sec = new seconde(sec)
-        this.sec.valeur = this.convertSeconds()
-    }
-
-    private _sec: seconde
-
-    get sec(): seconde {
-        return this._sec;
-    }
-
-    set sec(value: seconde) {
-        this._sec = value;
-    }
-
-    convertSeconds(): number {
-        if (this.sec.valeur > 60) {
-            let min = this.sec.valeur / 60
-            this.valeur += Math.round(min)
-            this.sec.valeur = this.sec.valeur % 60
-        } else {
-            return this.sec.valeur
+        print(): string {
+            return this.valeur + this.text + this._sec.print()
         }
     }
 
-    print(): string {
-        return this.valeur + this.text + this._sec.print()
-    }
-}
+    class seconde extends time {
 
-class seconde extends time {
+        constructor(value: number) {
+            super(value, "\"");
+        }
 
-    constructor(value: number) {
-        super(value, "\"");
+        print(): string {
+            return this.valeur + this.text
+        }
     }
 
-    print(): string {
-        return this.valeur + this.text
+    export function printMinutesAndSecondes(min: number, sec: number): void {
+        let val = new premier(min, sec)
+        console.log(val.print())
     }
+
 }
 
 function isPrime(n: number): boolean {
@@ -91,9 +68,4 @@ function isPrime(n: number): boolean {
     return prime;
 }
 
-function printMinutesAndSecondes(min: number, sec: number): void {
-    let val = new premier(min, sec)
-    console.log(val.print())
-}
-
-printMinutesAndSecondes(2, 90)
+TestSpace.printMinutesAndSecondes(2, 90)

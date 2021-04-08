@@ -1,15 +1,22 @@
+namespace CarSpace {
 
-interface Blah {
-}
+    interface Blah {
+        test: string
 
-class Car implements Blah {
-    Engine: string;
-    test: string;
-
-    constructor(engine: string) {
-        this.Engine = engine;
+        drive(number, boolean, string)
     }
-  
-function drive(speed : number, drive : boolean, direction : string){
-    console.log('The car is driving');
+
+    class Car implements Blah {
+        Engine: string;
+        test: string;
+
+        constructor(engine: string) {
+            this.Engine = engine;
+        }
+    
+        drive(speed : number, drive : boolean, direction : string){
+            if (drive)
+                console.log('The car is driving' + direction + "at" + speed)
+        }
+    }
 }
