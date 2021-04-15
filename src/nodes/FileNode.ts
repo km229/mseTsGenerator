@@ -1,4 +1,4 @@
-import * as type from "../types"
+import type from "../types"
 import {SourceFile} from "ts-morph"
 import {File} from "../../lib/pascalerni/model/file"
 import {MSEDocument} from "../model/MSEDocument"

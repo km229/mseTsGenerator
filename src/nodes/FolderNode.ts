@@ -1,4 +1,4 @@
-import * as type from "../types"
+import type from "../types"
 import {Folder} from "../../lib/pascalerni/model/file"
 import {MSEDocument} from "../model/MSEDocument"
 import {FamixNode} from "../model/FamixNode"

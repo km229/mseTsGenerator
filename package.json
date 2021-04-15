@@ -1,7 +1,7 @@
 {
-  "name": "mseTsGenerator",
-  "version": "2.0.0",
-  "description": "Project for course MGL843",
+  "name": "mse_ts_generator",
+  "version": "2.1.0",
+  "description": "Research project to generate a MSE file from typescript source code, for course MGL843",
   "main": "index.ts",
   "scripts": {
     "start": "ts-node index.ts",
@@ -9,14 +9,34 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/km229/mseTsGenerator_mgl843.git"
+    "url": "git+https://github.com/km229/mseTsGenerator.git"
   },
-  "author": "",
+  "author": "Kévin MORICEAU",
+  "contributors": [
+    {
+      "name": "Rémi Van Driessche",
+      "url": "https://github.com/remivand"
+    },
+    {
+      "name": "Aurélien Dellac",
+      "email": "https://github.com/OrelExia",
+      "url": "https://github.com/remivand"
+    },
+    {
+      "name": "Romain Peyret",
+      "email": "https://github.com/PtitCaillou",
+      "url": "https://github.com/remivand"
+    },
+    {
+      "name": "Nelson Deren",
+      "url": "https://github.com/nelsonderen24"
+    }
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/km229/mseTsGenerator_mgl843/issues"
+    "url": "https://github.com/km229/mseTsGenerator/issues"
   },
-  "homepage": "https://github.com/km229/mseTsGenerator_mgl843#readme",
+  "homepage": "https://github.com/km229/mseTsGenerator#readme",
   "dependencies": {
     "ts-morph": "^9.1.0",
     "ts-node": "^9.1.1"

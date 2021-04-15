@@ -1,4 +1,4 @@
-import * as type from "../types"
+import type from '../types'
 import {ImportDeclaration} from "ts-morph"
 import {FamixNode} from "../model/FamixNode"
 

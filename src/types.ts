@@ -1,14 +1,18 @@
+/** @enum types */
+enum types {
+    PROJECT = "Project",
+    FILE = "File",
+    IMPORT = "Import",
+    DIRECTORY = "Directory",
+    ATTRIBUTE = "Attribute",
+    CLASS = "Class",
+    INTERFACE = "Interface",
+    FUNCTION = "Function",
+    METHOD = "Method",
+    NAMESPACE = "Namespace",
+    PARAMETER = "Parameter",
+    CONSTRUCTOR = "Constructor",
+    PRIMITIF = "Primitif",
+}
 
-export const PROJECT = "Project"
-export const FILE = "File"
-export const IMPORT = "Import"
-export const DIRECTORY = "Directory"
-export const ATTRIBUTE = "Attribute"
-export const CLASS = "Class"
-export const INTERFACE = "Interface"
-export const FUNCTION = "Function"
-export const METHOD = "Method"
-export const NAMESPACE = "Namespace"
-export const PARAMETER = "Parameter"
-export const CONSTRUCTOR = "Constructor"
-export const PRIMITIF = "Primitif"
+export default types

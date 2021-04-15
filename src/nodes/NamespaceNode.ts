@@ -1,4 +1,4 @@
-import * as type from '../types'
+import type from '../types'
 import {NamespaceDeclaration} from "ts-morph"
 import {Namespace} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
