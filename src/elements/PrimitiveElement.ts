@@ -1,4 +1,4 @@
-import * as type from '../types'
+import type from '../types'
 import {FamixElement} from "../model/FamixElement"
 import {PrimitiveType} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"

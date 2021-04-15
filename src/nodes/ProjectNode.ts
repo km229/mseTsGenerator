@@ -1,5 +1,5 @@
 import {Project} from "ts-morph"
-import * as type from "../types"
+import type from "../types"
 import {FamixNode} from "../model/FamixNode"
 import {FileNode, FolderNode} from "../nodes"
 import {PrimitiveElement} from "../elements"

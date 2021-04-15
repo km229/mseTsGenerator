@@ -1,4 +1,4 @@
-import * as type from "../types"
+import type from '../types'
 import {InterfaceDeclaration} from "ts-morph"
 import {Class} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"

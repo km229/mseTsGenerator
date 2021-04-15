@@ -1,4 +1,4 @@
-import * as type from "../types"
+import type from "../types"
 import {FunctionDeclaration} from "ts-morph"
 import {Function} from "../../lib/pascalerni/model/famix"
 import {MSEDocument} from "../model/MSEDocument"
